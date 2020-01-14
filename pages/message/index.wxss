@@ -1,0 +1,139 @@
+/* pages/user/index.wxss */
+
+.container {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.banner {
+  width: 100%;
+  /* height: 300rpx; */
+  height: 100%;
+  margin-bottom: 20rpx;
+}
+
+.banner image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cont {
+  padding: 20rpx;
+  border-top: 1px solid #f6f6f6;
+  padding-bottom: 0rpx;
+}
+
+.hots {
+  color: #d7c29f;
+  font-size: 30rpx;
+}
+
+.title {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 30rpx;
+}
+
+.detail {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pic_img{
+  width: 150rpx;
+  height: 150rpx;
+  margin: 20rpx 0rpx;
+  margin-right: 20rpx;
+}
+
+.right {
+  margin-top: 20rpx;
+  color: #777;
+}
+
+.food {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.right_news {
+  height: 90rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  width: 525rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+}
+
+.assess image {
+  width: 30rpx;
+  height: 25rpx;
+  margin-right: 5rpx;
+}
+
+.foods {
+  display: inline-block;
+  width: 100%;
+  font-weight: 400;
+  color: #000;
+  font-size:30rpx;
+
+}
+
+.all {
+  display: inine-block;
+  width: 70%;
+  text-align: right;
+}
+
+.assess {
+  display: inline-block;
+  width: 50%;
+}
+
+/***评论**/
+
+.input_null {
+  color: #c9c9c9;
+}
+
+.release {
+  display: flex;
+  align-items: flex-end; /*底部对齐*/
+  justify-content: space-between; /*两端对齐*/
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 18rpx 0 18rpx 30rpx;
+  background-color: #f7f8f7;
+  font-size: 28rpx;
+  z-index: 999;
+}
+
+.release .text {
+  width: 604rpx;
+  min-height: 34rpx;
+  max-height: 102rpx; /*最多显示三行*/
+  border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
+  border-style: solid;
+  border-color: #fff;
+  line-height: 34rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
+}
+
+.release .submit {
+  width: 116rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  color: #6c0;
+}

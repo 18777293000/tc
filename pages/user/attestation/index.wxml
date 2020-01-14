@@ -1,0 +1,24 @@
+<!--pages/user/attestation/index.wxml-->
+<view id="page">
+  <form bindsubmit='formSubmit'>
+    <view class='attestation_box'>
+      <view class='list_line'>
+        <text style='flex:2'>姓名：</text>
+        <input style='flex:7' value='{{name}}' type='text' name="names"></input>
+      </view>
+      <view class='list_line'>
+        <text style='flex:2'>学号：</text>
+        <input style='flex:7' value='{{num}}' type='number' name="s_number"></input>
+      </view>
+      <view class='list_line'>
+        <text style='flex:2'>院系：</text>
+        <input style='flex:7' value='{{yuanxi}}' type='yuanxi' name="yuanxi"></input>
+      </view>
+      <view class='list_line'>
+        <text style='flex:2'>专业班级：</text>
+        <input style='flex:7' value='{{major}}' type='text' name="major"></input>
+      </view>
+    </view>
+     <button class='save'  form-type='submit'>提交</button>
+  </form>
+</view>

@@ -1,0 +1,752 @@
+<!--pages/user/orders/orderFood/orderFood.wxml-->
+
+<view class="container">
+
+  <view class="swiper-tab">
+    <view wx:for="{{navbar}}" wx:key="{{id}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" data-type="{{index}}" bindtap="swichNav">{{item}}</view>
+
+  </view>
+  <!------全部---->
+  <view hidden="{{currentTab!==0}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <!--------type=1,外卖---->
+      <view class="goods" wx:if="{{item.type == 1}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(外卖)</text>
+
+          <text wx:if="{{item.status == 0}}">待支付</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">已完成</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <text wx:if="{{item.status == 2}}">已接单</text>
+          <text wx:if="{{item.status == 1}}">待发货</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+      <!--------type=2,预约---->
+      <view class="goods" wx:if="{{item.type ==2}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(预约)</text>
+          <text wx:if="{{item.status == 0}}">未支付</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">已拒绝</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <text wx:if="{{item.status == 2}}">已通过</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <view>预约时间:</view>
+            <text>{{item.fixed_time}}</text>
+            <view>联系电话:</view>
+            <text>{{item.mobile}}</text>
+            <view>联系人:</view>
+            <text>{{item.username}}</text>
+            <text wx:if="{{item.sex==2}}">（女士）</text>
+            <text wx:if="{{item.sex==1}}">（先生）</text>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+
+        </view>
+      </view>
+      <!--------type=3,扫码点餐---->
+      <view class="goods" wx:if="{{item.type == 3}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(扫码点餐)</text>
+          <text wx:if="{{item.status == 0}}">待支付</text>
+          <text wx:if="{{item.status == 4}}">已接单</text>
+          <text wx:if="{{item.status == 2}}">已完成</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <!-- <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text> -->
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+  <!------待支付-->
+  <view hidden="{{currentTab!==1}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <!--------type=1,外卖---->
+      <view class="goods" wx:if="{{item.type == 1}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(外卖)</text>
+          <text wx:if="{{item.status == 0}}">待支付</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+      <!--------type=2,预约---->
+      <view class="goods" wx:if="{{item.type ==2}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(预约)</text>
+          <text wx:if="{{item.status == 0}}">未支付</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">已拒绝</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <text wx:if="{{item.status == 2}}">已通过</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <view>预约时间:</view>
+            <text>{{item.fixed_time}}</text>
+            <view>联系电话:</view>
+            <text>{{item.mobile}}</text>
+            <view>联系人:</view>
+            <text>{{item.username}}</text>
+            <text wx:if="{{item.sex==2}}">女士</text>
+            <text wx:if="{{item.sex==1}}">先生</text>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+
+        </view>
+      </view>
+      <!--------type=3,扫码点餐---->
+      <view class="goods" wx:if="{{item.type == 3}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(扫码点餐)</text>
+          <text wx:if="{{item.status == 0}}">待支付</text>
+          <text wx:if="{{item.status == 4}}">已接单</text>
+          <text wx:if="{{item.status == 2}}">已完成</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <!-- <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text> -->
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-----已支付---->
+  <view hidden="{{currentTab!==2}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <!--------type=1,外卖---->
+      <view class="goods" wx:if="{{item.type == 1}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(外卖)</text>
+          <text wx:if="{{item.status == 0}}" bindtap="reset" data-orderId="{{item.id}}">取消订单</text>
+          <!-- <text wx:if="{{item.status == 0}}">已取消</text> -->
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <text wx:if="{{item.status == 2}}">已接单</text>
+          <text wx:if="{{item.status == 1}}">待发货</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <view id="price">
+
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+
+          </view>
+
+        </view>
+      </view>
+      <!-- type=2,预约 -->
+      <view class="goods" wx:if="{{item.type ==2}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(预约)</text>
+          <text wx:if="{{item.status == 0}}">未支付</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">已拒绝</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <text wx:if="{{item.status == 2}}">已通过</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <view>预约时间:</view>
+            <text>{{item.fixed_time}}</text>
+            <view>联系电话:</view>
+            <text>{{item.mobile}}</text>
+            <view>联系人:</view>
+            <text>{{item.username}}</text>
+            <text wx:if="{{item.sex==2}}">（女士）</text>
+            <text wx:if="{{item.sex==1}}">（先生）</text>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+
+        </view>
+      </view>
+      <!-- type=3,扫码 -->
+      <view class="goods" wx:if="{{item.type == 3 && item.status == 5}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(扫码点餐)</text>
+          <text wx:if="{{item.status == 0}}">待支付</text>
+          <text wx:if="{{item.status == 4}}">已接单</text>
+          <text wx:if="{{item.status == 2}}">已完成</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <!-- <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text> -->
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-----待收货---->
+  <view hidden="{{currentTab!==3}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <!--------type=1,外卖---->
+      <view class="goods" wx:if="{{item.type == 1}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(外卖)</text>
+          <text wx:if="{{item.status == 0}}" bindtap="reset" data-orderId="{{item.id}}">取消订单</text>
+          <!-- <text wx:if="{{item.status == 0}}">已取消</text> -->
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.order_id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 4}}" data-orderId="{{item.id}}" data-name="确认收货" bindtap="click">确认收货</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.order_id}}" data-name="退款中">退款中</view>
+
+          </view>
+
+        </view>
+      </view>
+
+      <!--------type=3,扫码点餐---->
+      <view class="goods" wx:if="{{item.type == 3}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(扫码点餐)</text>
+          <text wx:if="{{item.status == 0}}">待支付</text>
+          <text wx:if="{{item.status == 4}}">已接单</text>
+          <text wx:if="{{item.status == 2}}">已完成</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <!-- <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text> -->
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+
+          </view>
+
+        </view>
+      </view>
+
+
+    </block>
+  </view>
+  <!-----待评价---->
+  <view hidden="{{currentTab!==4}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <!--------type=1,外卖---->
+      <view class="goods" wx:if="{{item.type == 1}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(外卖)</text>
+          <text wx:if="{{item.status == 0}}" bindtap="reset" data-orderId="{{item.id}}">取消订单</text>
+          <!-- <text wx:if="{{item.status == 0}}">已取消</text> -->
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">已完成</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+
+            <view id="price">
+
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="xiang" id="{{item.id}}">查看详情</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+
+          </view>
+
+        </view>
+      </view>
+      <!--------type=2,预约---->
+      <view class="goods" wx:if="{{item.type ==2}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(预约)</text>
+          <text wx:if="{{item.status == 0}}">未支付</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">已拒绝</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <text wx:if="{{item.status == 2}}">已通过</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <view>预约时间:</view>
+            <text>{{item.fixed_time}}</text>
+            <view>联系电话:</view>
+            <text>{{item.mobile}}</text>
+            <view>联系人:</view>
+            <text>{{item.username}}</text>
+            <text wx:if="{{item.sex==2}}">女士</text>
+            <text wx:if="{{item.sex==1}}">先生</text>
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.commission}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <!-- <text class="total">共计{{item.child.num}}件商品</text> -->
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+
+          </view>
+
+
+        </view>
+      </view>
+      <!--------type=3,扫码点餐---->
+      <view class="goods" wx:if="{{item.type == 3}}">
+        <view class="title">
+          <text class="name">{{item.store.store_name}}(扫码点餐)</text>
+          <text wx:if="{{item.status == 0}}">待支付</text>
+          <text wx:if="{{item.status == 4}}">已接单</text>
+          <text wx:if="{{item.status == 2}}">已完成</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <!-- <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text> -->
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 5}}">已支付</text>
+          <!-- <text wx:if="{{item.status == 2}}">已收货</text> -->
+        </view>
+        <view class="middle">
+          <image src="{{item.store.image}}" class="left"></image>
+          <view class="middles">
+            <block wx:for="{{item.cart}}" wx:key="id" wx:for-item="cart">
+              <view class="foods">
+                <view>
+                  <text>{{cart.name}}</text>
+                </view>
+                <view>
+                  <text>{{cart.num}}</text>X
+                  <text>{{cart.pay_price}}</text>
+                </view>
+              </view>
+            </block>
+            <view>包装费：{{item.packing}}</view>
+            <view>配送费：{{item.delivery}}</view>
+          </view>
+          <view class="right">
+
+            <view id="price">
+
+            </view>
+            <view class="totals">
+
+              <text>合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 5}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 3}}" data-orderId="{{item.id}}" data-name="去评论" bindtap="click">去评论</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+
+          </view>
+
+        </view>
+      </view>
+
+    </block>
+  </view>
+</view>

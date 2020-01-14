@@ -1,0 +1,33 @@
+<!-- <text>与我相关暂未开放</text> -->
+<view qq:if="{{list.lenth!=0 && list!=''}}" class='pages'>
+  <view class='list_box' qq:for="{{list}}" qq:key="key">
+    <view class='list' data-id="{{item.id}}">
+      <view class='list_top'>
+        <view style='display:flex;font-size:26rpx;' qq:if="{{item.type==1}}">
+          <view class='classify' style='background:#86c5e8'>系统</view>
+          <text style='padding-left:20rpx;box-sizing:border-box'>{{item.title}}</text>
+        </view>
+        <view style='display:flex;font-size:26rpx;' qq:if="{{item.type==2}}">
+          <view class='classify' style='background:#ff7f7e'>消息</view>
+          <text style='padding-left:20rpx;box-sizing:border-box'>{{item.title}}</text>
+        </view>
+        <view style='display:flex;font-size:26rpx;' qq:if="{{item.type==3}}">
+          <view class='classify' style='background:#ffac52'>订单</view>
+          <text style='padding-left:20rpx;box-sizing:border-box'>{{item.title}}</text>
+        </view>
+        <view>
+          <image style="width:20rpx;height:20rpx;" src='img/img2.png'></image>
+        </view>
+      </view>
+      <view class='list_bottom'>
+        <view class='centert'>{{item.content}}</view>
+        <view class='time'>{{item.create_time_text}}</view>
+      </view>
+    </view>
+  </view>
+  
+
+</view>
+<view class="noneME" qq:else>
+    <text>暂无消息</text>
+</view>

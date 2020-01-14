@@ -1,0 +1,50 @@
+<!--pages/user/enter/staff/index.wxml-->
+<view class='pages'>
+    <form bindsubmit='formSubmit'>
+      <view class='merchant_box'>
+          <view class='list_line'>
+              <text style='flex:2'>姓名</text> 
+              <input style='flex:9;' placeholder='' type='text' name="names"></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:2'>联系电话</text>
+              <input style='flex:7;' placeholder='' type='number' name="telephone"></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:3'>身份证号码</text>
+              <input style='flex:7;' placeholder='' type='number' name="identity"></input>
+          </view>
+          <view class='list_line' style='flex-direction: column; align-items: left;'>
+              <text>身份证正反面：</text>
+              <view class='shop_img'>
+                 <view class='img_show' bindtap='img_one'>
+                    <view class='add' hidden='{{shop_img1}}'>+</view>
+                    <image src='{{img_one}}'></image>
+                 </view>
+                 <view class='img_show'  bindtap='img_two'>
+                    <view class='add' hidden='{{shop_img2}}'>+</view>
+                    <image src='{{img_two}}'></image>
+                 </view>
+                
+              </view>
+          </view>
+
+          <view class='list_line'>
+              <text style='flex:2'>所学专业</text> 
+              <input style='flex:7;' placeholder='' type='text' name="major"></input>
+          </view>
+          <view class='list_line' style='flex-direction: column; align-items: left;'>
+              <text>个人简历附件(简历附件只支持JPG/png格式）</text>
+              <view class='shop_img'>
+                 <view class='img_show' bindtap='img_five'>
+                    <view class='add' hidden='{{shop_img5}}'>+</view>
+                    <image src='{{img_five}}'></image>
+                 </view>
+                 
+              </view>
+          </view>
+         
+          <button form-type='submit'>提交审核</button>
+      </view>
+    </form>
+</view>

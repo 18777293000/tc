@@ -1,0 +1,108 @@
+/* pages/user/assess/assess.wxss */
+page{
+  background:#f2f2f2;
+}
+.roast{
+  /* width:100%; */
+  background: #fff;
+  margin:20rpx;
+  border-radius: 30rpx;
+}
+.roasttop{
+  border-bottom: 1px solid #f2f2f2;
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin:0 20rpx;
+}
+.img_box{
+  width: 120rpx;
+  height: 120rpx;
+}
+.img_box image{
+  width: 100%;
+  height: 100%;
+}
+.roasttop_word{
+  padding:10rpx 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.top{
+  font-size: 26rpx;
+  color: #666;
+  display: flex
+}
+.score image{
+  width: 40rpx;
+  height: 40rpx
+}
+.roasttop textarea{
+  /* border:1px solid #333; */
+  height: 80rpx;
+  width:65%;
+  line-height: 80rpx;
+   color: #737373;
+  font-size: 26rpx;
+}
+
+.roastbottom{
+  margin:20rpx;
+  /* display: flex; */
+  padding-bottom: 20rpx;
+}
+.roastbottom text{
+  font-size: 34rpx;
+}
+.roastbottom textarea{
+  width:650rpx;
+  /* border: 1px solid #333; */
+  font-size:36rpx;
+  color: #737373; 
+  line-height: 30rpx;
+  height: 600rpx;
+  letter-spacing: 10rpx;
+}
+.pics{
+  position: absolute;
+  left:60rpx;
+  top:858rpx;
+
+  /* z-index: -1; */
+  font-size: 32rpx;
+  text-align: center;
+  color:#666;
+}
+.photo{
+width:150rpx;
+height:100rpx;
+display: block;
+margin:0 auto;
+}
+.camera{
+  /* border: 1px solid #333; */
+  width:185rpx;
+  height: 185rpx;
+  background: #e5e5e5;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.hide{
+ display: none;
+}
+.show{ 
+ display: block;
+}
+.publish{
+  /* width:100%; */
+  height:100rpx;
+  background: #e7d0ae;
+  margin:0 20rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color:#fff;
+  font-size: 32rpx;
+}

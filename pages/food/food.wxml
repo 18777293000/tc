@@ -1,0 +1,159 @@
+<!--pages/foods/food.wxml-->
+<view class="container">
+  <!-- 轮播图 -->
+  <view class="banner" hidden="{{show}}">
+    <swiper class="" indicator-dots="true" autoplay="true" circular="{{true}}" interval="3000" duration="1000" indicator-color="#fff" indicator-active-color="#e2e2e2">
+      <block qq:for-item="banner" qq:for="{{banner}}" qq:key="this">
+        <swiper-item item-id="{{index}}">
+          <navigator data-id="{{index}}" url="{{banner.url}}">
+            <image class="slide-image" mode="aspectFill" src="{{banner.image}}" data-id="{{index}}"></image>
+          </navigator>
+
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!--搜索框---->
+  <!-- <view class="search">
+    <icon type="search" />
+    <form>
+      <input placeholder='黄焖鸡' name='keyword' value='{{keyword}}' bindinput="keyword" />
+    </form>
+  </view> -->
+  <!-- <view class="swiper-tab" >  
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav" >综合排序</view>  
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">销量最高</view>  
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">距离最近</view>  
+   </view> -->
+  <view class="swiper-tab">
+    <!-- <view qq:for="{{navbar}}" qq:key="{{item}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav">{{item}}
+
+    </view>  -->
+    <view qq:for="{{navbar}}" qq:key="{{id}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" data-type="{{index}}" bindtap="swichNav">
+    {{item}}
+    <text class="bot"></text>
+    </view>
+
+  </view>
+  <view hidden="{{currentTab!==0}}">
+        <block qq:for="{{storeDate}}" qq:key="id" data-index="{{index}}" data-item="{{item}}">
+      <view class='conts' bindtap='next' data-id="{{item.seller_id}}">
+        <image src="{{item.image}}" class="left" />
+        <view class="names">
+          <text>{{item.store_name}}</text>
+          <view class="stars">
+            <block qq:for="{{item.likes}}" qq:key="{{item}}">
+              <image src='details/image/foods_08.png'></image>
+            </block>
+            <block qq:for="{{5-item.likes}}" qq:key="{{item}}">
+              <image src='details/image/foods_10.png'></image>
+            </block>
+          </view>
+          <text class="month">月售{{item.month_num}}单</text>
+        </view>
+        <view class="rights">
+          <view class="attuide">
+            <!-- <text class="out">{{item.out}}</text>
+            <text class="take">{{item.take}}</text>
+            <text class="order">{{item.reserve}}</text> -->
+            <text class="out" qq:if="{{item.is_out!=0}}">外</text>
+            <text class="take" qq:if="{{item.is_pick!=0}}">取</text>
+            <text class="order" qq:if="{{item.is_reserve!=0}}">预</text>
+
+
+          </view>
+          <text class="distance">{{item.distance}}</text>
+        </view>
+
+        <!-- <text class="hot">{{item.hot}}</text>
+        <text class="title">{{item.title}}</text> -->
+
+
+      </view>
+    </block>
+
+  </view>
+  <!-- 销量最高 -->
+  <view hidden="{{currentTab!==1}}">
+    <!-- 销量最高 -->
+
+    <block qq:for="{{storeDate}}" qq:key="id" data-index="{{index}}" data-item="{{item}}">
+      <view class='conts' bindtap='next'  data-id="{{item.seller_id}}">
+        <image src="{{item.image}}" class="left" />
+        <view class="names">
+          <text>{{item.store_name}}</text>
+          <view class="stars">
+            <block qq:for="{{item.likes}}" qq:key="{{item}}">
+              <image src='details/image/foods_08.png'></image>
+            </block>
+            <block qq:for="{{5-item.likes}}" qq:key="{{item}}">
+              <image src='details/image/foods_10.png'></image>
+            </block>
+          </view>
+          <text class="month">月售{{item.month_num}}单</text>
+        </view>
+        <view class="rights">
+          <view class="attuide">
+            <!-- <text class="out">{{item.out}}</text>
+            <text class="take">{{item.take}}</text>
+            <text class="order">{{item.reserve}}</text> -->
+            <text class="out" qq:if="{{item.is_out!=0}}">外</text>
+            <text class="take" qq:if="{{item.is_pick!=0}}">取</text>
+            <text class="order" qq:if="{{item.is_reserve!=0}}">预</text>
+
+
+          </view>
+          <text class="distance">{{item.distance}}</text>
+        </view>
+
+        <!-- <text class="hot">{{item.hot}}</text>
+        <text class="title">{{item.title}}</text> -->
+
+
+      </view>
+    </block>
+
+
+  </view>
+
+  <!-- 距离最近 -->
+  <view hidden="{{currentTab!==2}}">
+        <block qq:for="{{storeDate}}" qq:key="id" data-index="{{index}}" data-item="{{item}}">
+      <view class='conts' bindtap='next'  data-id="{{item.seller_id}}">
+        <image src="{{item.image}}" class="left" />
+        <view class="names">
+          <text>{{item.store_name}}</text>
+          <view class="stars">
+            <block qq:for="{{item.likes}}" qq:key="{{item}}">
+              <image src='details/image/foods_08.png'></image>
+            </block>
+            <block qq:for="{{5-item.likes}}" qq:key="{{item}}">
+              <image src='details/image/foods_10.png'></image>
+            </block>
+          </view>
+          <text class="month">月售{{item.month_num}}单</text>
+        </view>
+        <view class="rights">
+          <view class="attuide">
+            <!-- <text class="out">{{item.out}}</text>
+            <text class="take">{{item.take}}</text>
+            <text class="order">{{item.reserve}}</text> -->
+            <text class="out" qq:if="{{item.is_out!=0}}">外</text>
+            <text class="take" qq:if="{{item.is_pick!=0}}">取</text>
+            <text class="order" qq:if="{{item.is_reserve!=0}}">预</text>
+
+
+          </view>
+          <text class="distance">{{item.distance}}</text>
+        </view>
+
+        <!-- <text class="hot">{{item.hot}}</text>
+        <text class="title">{{item.title}}</text> -->
+
+
+      </view>
+    </block>
+
+  </view>
+</view>

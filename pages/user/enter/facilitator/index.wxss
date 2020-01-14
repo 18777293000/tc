@@ -1,0 +1,40 @@
+/* pages/user/enter/facilitator/index.wxss */
+.pages{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.merchant_box{
+  background: white;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+}
+.list_line{
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.shop_img{
+  width: 100%;
+}
+.shop_img textarea{
+  width: 100%;
+  border: 1px solid #d2d2d2;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+button{
+  padding: 10rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  letter-spacing: 10rpx;
+  text-align: center;
+  background: #dac9ad;
+  color: white;
+  margin-top: 30rpx
+}
+button::after{
+  border: none
+}

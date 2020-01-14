@@ -1,0 +1,81 @@
+<!--pages/user/enter/staff/index.wxml-->
+<view class='pages'>
+    <form bindsubmit='formSubmit'>
+      <view class='merchant_box'>
+          <view class='list_line'>
+              <text style='flex:2'>姓名</text> 
+              <input style='flex:9;' placeholder='' type='text' name="names"></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:2'>联系电话</text>
+              <input style='flex:7;' placeholder='' type='number' name="telephone"></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:3'>身份证号码</text>
+              <input style='flex:7;' placeholder='' type='number' name="identity"></input>
+          </view>
+          <view class='list_line' style='flex-direction: column; align-items: left;'>
+              <text>身份证正反面：</text>
+              <view class='shop_img'>
+                 <view class='img_show' bindtap='img_one'>
+                    <view class='add' hidden='{{shop_img1}}'>+</view>
+                    <image src='{{img_one}}'></image>
+                 </view>
+                 <view class='img_show'  bindtap='img_two'>
+                    <view class='add' hidden='{{shop_img2}}'>+</view>
+                    <image src='{{img_two}}'></image>
+                 </view>
+                
+              </view>
+          </view>
+
+          <view class='list_line'>
+              <text style='flex:2'>所学专业</text> 
+              <input style='flex:7;' placeholder='' type='text' name="major"></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:2'>学号</text> 
+              <input style='flex:7;' placeholder='' type='number' name="stu_num"></input>
+          </view>
+          <view class="info-label info-content flex-row">
+            <view bindtap="agree" class="info-agree flex-row flex-y-center">
+              <input name="agree" style="display:none" value="{{agree}}"></input>
+              <image src="{{img}}" style="width:32rpx;height:32rpx;"></image>
+              <text style="margin-left:10rpx;">我已经阅读并了解</text>
+              <view bindtap="openrule" style="color:#014c8c">【保密协议】</view>
+              <view bindtap="openrule1" style="color:#014c8c">【安全协议】</view>
+            </view>
+          </view>
+          <button form-type='submit'>提交审核</button>
+      </view>
+    </form>
+<view>
+    <view class='tip-content-dialog' qq:if="{{showModal}}">
+      
+      <scroll-view class="tip-dialog-view " scroll-y='true' style='height:85%;background: #fff;text-align:center'>
+          <text style="font-size:20px;">保密协议</text>
+              <view style="width:100%;">
+                <text style="font-size:15px;">{{datas.data.content}}</text>
+              </view>
+              <view style="background:#dac9ad;width:100%;" bindtap='closerule'>
+                <text style="font-size:20px">确定</text>   
+              </view> 
+      </scroll-view>
+    </view>
+    
+</view>
+<view>
+    <view class='tip-content-dialog' qq:if="{{showModal1}}">
+      <scroll-view class="tip-dialog-view " scroll-y='true' style='height:85%;background: #fff;text-align:center'>
+          <text style="font-size:20px;">安全协议</text>
+              <view style="width:100%;">
+                <text style="font-size:15px;">{{data1.data.content2}}
+                </text>
+              </view>
+              <view style="background:#dac9ad;width:100%;" bindtap='closerule1'>
+                <text style="font-size:20px" >确定</text>   
+              </view>
+      </scroll-view>
+    </view>
+</view>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/user/wallet/index.wxml-->
+<!-- <view class='pages' style='background:url({{background}}) no-repeat 100% '>
+
+</view> -->
+<view class='pages'>
+    <image src='img/wallet.png'></image>
+    <view class='money_num'>
+          ￥200.00元
+    </view>
+    <view class='recharge' bindtap='figure' data-type="1">充值</view>
+    <view class='deposit' bindtap='figure' data-type="2">提现</view>
+</view>
+<view class='figure' hidden='{{figure}}'>
+    <view class='figure_box'>
+        <text>{{money}}</text>
+        <view class='money_input'>
+            <view style='flex:2'>￥</view>
+            <input type='number' style='flex:8'></input>
+        </view>
+        <view class='confirm' bindtap='confirm' data-type="{{types}}">确定</view>
+    </view>
+</view>

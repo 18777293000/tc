@@ -1,0 +1,21 @@
+<!--pages/sign/sign.wxml-->
+<view class="camera">
+  <view bindtap="uploadimg" style="width:680rpx;height:500rpx;margin:0 auto;border-radius:20rpx;opacity:.8;border:1px solid #ccc;">
+    <image src='{{source}}' mode='aspectFill' lazy-load='true' />
+  </view>
+  <view class="pics  {{showView?'show':'hide'}}" bindtap="uploadimg">
+    <image class="photo" src="../img/photo.png"></image>
+    <text>点击上传图片</text>
+  </view>
+</view>
+<view class="orientation" bindtap='maps'>
+  <image class="address" src='img/address.png'></image>
+  <view >{{address}}</view>
+</view>
+<form bindsubmit='publish'>
+  <view class='share'>
+    <image class="text" src='img/text.png'></image>
+    <textarea name="textareas" class="word" maxlength="9999" placeholder="分享心情....." value="{{texts}}"></textarea>
+  </view>
+  <button form-type='submit' class='publish'>发布</button>
+</form>

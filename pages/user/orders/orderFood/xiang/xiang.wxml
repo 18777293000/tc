@@ -1,0 +1,36 @@
+<view style="background: #fff;">
+  <!-- 总价 -->
+  <view class="yang" style="display:flex">
+  <view>
+  <view>商品总价：￥{{list.total_price}}</view>
+    <view>配送费：￥{{list.delivery}}</view>
+    <view>包装费：￥{{list.packing}}</view>
+    <view>平台/店铺优惠券抵扣：-￥{{list.total_price - list.pay_price}}</view>
+    <view>实付：￥{{list.pay_price}}</view>
+  </view>
+    <view class="res" bindtap="pj">去评价</view>
+  </view>
+  <!-- 联系人 -->
+  <view class="yang">
+    <view>
+      <text decode="{{true}}">联系人：{{list.username}}&nbsp;&nbsp;&nbsp;{{list.mobile}}</text>
+    </view>
+    <view>
+      <text>收获地址：{{list.address_id}}</text>
+    </view>
+  </view>
+  <!-- 订单 -->
+  <view class="yang">
+    <view>订单编号：{{list.order_no}}</view>
+    <view>配送方式：跑鹿儿</view>
+    <view>支付方式：微信支付</view>
+    <view>订单备注：{{list.remarks}}</view>
+  </view>
+  <!-- 信息 -->
+  <view class="yang">
+    <view>接单时间：{{list.order_no}}</view>
+    <view>送达时间：{{list.delivery_time}}</view>
+    <view>已送达：{{list.suretime}}</view>
+    <view>已收货：{{list.suretime2}}</view>
+  </view>
+</view>

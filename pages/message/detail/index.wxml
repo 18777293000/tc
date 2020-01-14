@@ -1,0 +1,114 @@
+<!--pages/message/detail/index.wxml-->
+<!--pages/message/datails/datails.wxml-->
+<!-- <import src="../../res/wxParse/wxParse.wxml"></import> -->
+<view class='container'>
+  <text class="title">
+    {{content.title}}
+    </text>
+  <view class="cont">
+    <view class="head">
+      <image src='{{content.avatar}}' class="left" class="pic" />
+      <view class="middle">
+        <text class="owner">{{content.username}}</text>
+        <text>{{content.create_time}}</text>
+      </view>
+      <view class="building">楼主</view>
+    </view>
+    <view class="word" qq:if="{{type!=1}}">
+      <text>
+        {{content.content}}
+      </text>
+          <image src='{{content.image}}' mode="widthFix" />
+    </view>
+  </view>
+  <view style="margin-top:30rpx;" qq:if="{{type == 1}}"> 投票截止日期： {{content.end_time}} </view>
+  <!-- 投票 -->
+  <view class="content" qq:if="{{type == 1}}">
+    <!-- <view class="title">主题 <text>1212121</text>  </view> -->
+    <view class="cons"></view>
+    <view class="list" qq:if="{{is_type == 1}}">
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" qq:for="{{listtou}}" qq:key="index">
+          <view style="padding-right:190rpx;box-sizing: border-box;position:relative;">
+            <radio value="{{item.id}}" checked="{{item.valid==1}}" disabled="{{yestou==true}}" style="float:left;" />
+            <view style="float:left; overflow:hidden;text-overflow:ellipsis;white-space: nowrap;width:200rpx;">{{item.vote_name}}</view>
+            <text style="position: absolute;right:0;z-index:99;">{{item.count}}票</text>
+            <text style="color:red;position: absolute;right:60rpx;z-index:99;">{{item.valid==1?"已投票":""}}</text>
+
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view qq:if="{{is_type == 2}}" class="list" >
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" qq:for="{{listtou}}" qq:key="index">
+          <view style="padding-right:190rpx;box-sizing: border-box;position:relative;">
+            <checkbox value="{{item.id}}" checked="{{item.valid==1}}" disabled="{{yestou==true}}" style="float:left;" />
+            <view style="float:left; overflow:hidden;text-overflow:ellipsis;white-space: nowrap;width:200rpx;">{{item.vote_name}}</view>
+            <text style="position: absolute;right:0;z-index:99;">{{item.count}}票</text>
+            <text style="color:red;position: absolute;right:60rpx;z-index:99;">{{item.valid==1?"已投票":""}}</text>
+          </view>
+
+        </label>
+      </checkbox-group>
+    </view>
+   
+    <view class="con"></view>
+    <button>已投</button>
+    <view class="butt" bindtap="toupiao">我要投票</view>
+  </view>
+
+  <!-- 内容 -->
+  <view qq:for="{{list}}" qq:key="index" class="neirong" qq:if="{{type!=1}}">
+    <view class="assess">
+      <image src='{{item.user.avatar}}' class="lefts" />
+      <view class="rights">
+        <text class="flor">{{item.floor}}楼</text>
+        <text class="name">{{item.user.nickname}}</text>
+        <text class="words">{{item.content}}</text>
+
+        <view class="detalis">
+          <block qq:for="{{item.reply}}">
+            <view class="ass">
+              <text class="fish">{{item.user.nickname}}:</text>
+              <text>{{item.content}}</text>
+            </view>
+          </block>
+        </view>
+
+
+        <view class="bot">
+          <text class="date">{{item.create_time}}</text>
+          <text class="rewords" bindtap='bindReply' data-id='{{item.id}}' data-idx="{{commandTab}}">回复</text>
+        </view>
+        <form></form>
+        <view class="release" data-id='{{item.id}}' qq:if='{{commandTab == item.id}}' data-idx="{{commandTab}}">
+          <textarea class="text" placeholder-class="input_null" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{commandTab == item.id}}" value='{{textarea_val}}' bindinput='bindTextAreaBlur'></textarea>
+
+          <view class="submit" bindtap="send" data-id='{{item.id}}' data-commandTab="{{commandTab}}"> 发送</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<!-- 底部 -->
+<view class="foot" qq:if="{{type!=1 && isReply != 1}}">
+  <form style='width:70%'>
+    <input bindinput='input_val' value="{{input_val}}" />
+  </form>
+  <image src='../../food/image/SUB.png' bindtap='reply' />
+  <!-- <image src='../../food/image/job_12.png' bindtap="good" wx-if="{{ifShow}}" />
+  <image src='../../food/image/good.png' class="good" wx-if="{{ifGood}}" style='bottom:32rpx' /> -->
+
+  <view class="assess" bindtap='heart' data-index='{{index}}'>
+    <image hidden="{{ifShow}}" src='../../food/image/job_12.png'></image>
+    <image hidden="{{ifGood}}" src='../../food/image/good.png'></image>
+    <text> {{item.likes}}</text>
+  </view>
+  <view class='share'>
+    <image src='../../food/image/share.png' />
+    <button open-type='share'></button>
+  </view>
+
+</view>

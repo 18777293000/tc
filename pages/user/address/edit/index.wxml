@@ -1,0 +1,35 @@
+<!--pages/user/address/edit/index.wxml-->
+<!--pages/user/address/add/index.wxml-->
+<view class='pages'>
+  <form bindsubmit='formSubmit'>
+    <view class='message_box'>
+      <view class='list_line'>
+        <view style="flex:2">收货人：</view>
+        <input style='flex:6' name="names" type='text' value='{{detail.name}}'></input>
+      </view>
+      <view class='list_line'>
+        <view style="flex:2">手机号码：</view>
+        <input style='flex:6' name="telephone" type='number' value='{{detail.mobile}}'></input>
+      </view>
+      <view class='list_line'>
+        <view style="flex:2">所在地区：</view>
+        <input style='flex:6'  name="address" type='text' value='{{detail.area}}'></input>
+      </view>
+      <view style='padding:20rpx 0;color:#666;box-sizing:border-box;width:100%;border-bottom: 1px solid #d2d2d2;'>
+        <text>详细地址:</text>
+        <textarea style='height:200rpx;width:100%;padding:20rpx;color:#666;box-sizing:border-box;border:1px solid #d2d2d2;margin-top:20rpx' placeholder='如门牌号、道路、小区、楼牌号、单元室等' value='{{detail.detail}}' name="particular"></textarea>
+      </view>
+      <view class='list_line' style='justify-content: space-between;'>
+        <view>设置为默认地址</view>
+        <switch checked="{{isdefault==1?true:false}}"  bindchange="switchChange"></switch>
+      </view>
+    </view>
+    <view class='message_box' style='margin-top:20rpx;' bindtap='delete'>
+        <view class='list_line' style='color:#e25858'>
+        删除收货地址
+
+      </view>
+    </view>
+    <button class='save'  form-type='submit'>保存</button>
+  </form>
+</view>

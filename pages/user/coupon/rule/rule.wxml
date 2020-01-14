@@ -1,0 +1,8 @@
+<view style="margin:10px;">
+  <view class="bt">平台优惠券使用规则</view>
+  <view>{{list[0]}}</view>
+</view>
+<view style="margin:10px;">
+  <view class="bt">补偿券使用规则</view>
+   <view>{{list[1]}}</view>
+</view>

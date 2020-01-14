@@ -1,0 +1,59 @@
+/* pages/user/index.wxss */
+/* pages/announce/announce.wxss */
+page{
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+  background: #f8f2e6;
+}
+.announce{
+  width: 100%;
+  position: absolute;
+  bottom: -20rpx;
+  left: 0 
+}
+.tbg{
+  margin-top: 735rpx;
+  width:100%;
+  height:380rpx;
+}
+.tp{
+  position: absolute;
+  width:80rpx;
+  height:80rpx;
+  font-size: 28rpx;
+  color:#737373;
+}
+.tp image{
+  width:80rpx;
+  height:80rpx;
+  display: block;
+}
+.tp text{
+  display: block;
+  text-align: center;
+}
+.tps{
+  top:170rpx;
+  left:56rpx;
+}
+.tc{
+  top:135rpx;
+  left:200rpx;
+}
+.nm{
+  top:97rpx;
+  left:344rpx;
+
+}
+.qz{
+  top:135rpx;
+left:481rpx
+}
+.qd{
+  top:170rpx;
+  left:606rpx;
+}
+view{
+  overflow: visible;
+}

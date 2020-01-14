@@ -1,0 +1,49 @@
+
+<view>
+ <view class="banner" hidden="{{show}}">
+     <swiper class="" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-color="#fff" indicator-active-color="#e2e2e2">
+      <block qq:for-item="banner" qq:for="{{banner}}" qq:key="this">
+        <swiper-item item-id="{{index}}">
+          <navigator data-id="{{index}}" url="{{banner.url}}">
+             <image class="slide-image" mode="aspectFill" src="{{banner.image}}" data-id="{{index}}"></image>
+           </navigator> 
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='express'>
+    <image catchtap='daiqu' class="daiqu" src="../../res/imgs/daiqu.png" mode="cover"></image>
+    <image class="jijian" catchtap='goMailing' src="../../res/imgs/jijian.png" mode="cover"></image>
+  </view>
+  <view class="price">
+     <view class='server_top'>
+      <text class='line'></text>
+      <text>价格一览</text>
+      <text class='line'></text>
+    </view>
+    <block qq:for-item="deliver" qq:for="{{deliver}}" qq:key="{{key}}">
+    <view class="table">
+      <view class="tr">
+        <view class="ths">
+          <image class="sf" src="{{deliver.image}}" mode="cover" alt="{{deliver.name}}"></image>
+        </view>
+      </view>
+      <view class="tr trs trsfont">
+        <view class="th add"id="add">目的地</view>
+        <view class="th">首重</view>
+        <view class="th ">续重</view>
+      </view>
+      <block qq:for-item="vo" qq:for="{{deliver.areas}}" qq:key="{{item}}">
+      <view class="tr trs">
+        <view class="th">
+          <text style="text-indent:20rpx;" qq:for-item="voo" qq:for="{{vo.area}}" qq:key="this">{{voo}}</text>
+        </view>
+        <view class="th">{{vo.first_price}}元/kg</view>
+        <view class="th ">{{vo.extend_price}}元/kg</view>
+      </view>
+      </block>
+    </view>
+    </block>
+
+  </view>
+</view>

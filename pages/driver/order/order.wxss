@@ -1,0 +1,188 @@
+/* pages/driver/order/order.wxss */
+/* pages/reservation/reservation.wxss */
+page{
+    width: 100%;
+    background: #ffffff;
+}
+.header{
+    width: 750rpx;
+    height: 180rpx;
+    border-top: 2rpx solid #ececec;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.header_box{
+    width: 690rpx;
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.header_img{
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    background: #e7d0ae;
+    overflow: hidden;
+}
+.header_img .image{
+    width: 100%;
+    height: 100%;
+}
+.header_info{
+    margin-left: 30rpx;
+    font-size: 30rpx;
+}
+.header_info view{  
+    margin-top: 15rpx;
+}
+.header_info .image{
+    width: 34rpx;
+    height: 34rpx;
+    vertical-align: middle;
+}
+.header_txt{
+    margin-left: 30rpx;
+}
+.border{
+    width: 100%;
+    height: 20rpx;
+    background: #f2f2f2;
+}
+.date{
+    width: 750rpx;
+    height: 200rpx;
+}
+.date_box{
+    width: 690rpx;
+    height: 100%;
+    margin: auto;
+}
+.timebox{
+  width: 100%;
+  height: auto;
+}
+.datebox{
+  height: 500rpx;
+  width: 100%;
+}
+.date_view{
+    width: 100%;
+    height: 100rpx;
+}
+.date1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30rpx;
+    color: #666666;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    border-bottom: 2rpx solid #efefef;
+}
+.wid{
+    display: inline-block;
+    width: 14.285%;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+}
+.bgc{
+    background: #e7d0ae;
+    border-radius: 50%;
+    color: #ffffff;  
+}
+.date-box{
+    font-size: 0;
+    line-height: 70rpx;
+    height: 100rpx;
+}
+.date-box>view{
+    position: relative;
+    display: inline-block;
+    width: 14.285%;
+    color: #020202;
+    font-size: 30rpx;
+    text-align: center;
+    vertical-align: middle;
+    margin: 15rpx 0;
+}
+
+.nowDay .date-head{
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    background: #e7d0ae;
+    margin: 0 auto;
+}
+.nowDay .date-weight{
+    color: #22A7F6;
+} 
+
+
+
+.footer{
+    width: 690rpx;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.footer_box{
+    width: 200rpx;
+    height: 200rpx;
+    text-align: center;
+    margin-top: 30rpx;
+    font-size: 23rpx;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.footer_box view{
+    line-height: 50rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.footer_box .img{
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}               
+
+
+
+.btn{
+    width: 670rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    margin-top: 60rpx;
+    color: #ffffff;
+    background: #e68f0f;
+    border-radius: 20rpx;
+}
+button::after {
+  border: none
+}
+button[disabled]{
+  color:white !important;
+  background: #e7d0ae !important;    
+}
+
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}

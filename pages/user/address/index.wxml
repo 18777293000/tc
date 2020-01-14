@@ -1,0 +1,21 @@
+<!--pages/user/address/index.wxml-->
+<view class='pages'>
+  <view class='add' bindtap='add'>添加新地址</view>
+  <view class='list_box' qq:for="{{list}}" qq:key="index">
+    <view class='list'>
+      <view class='list_left'>
+        <view class='left_top'>
+          <view class='stick' qq:if='{{item.isdefault==1}}'>默认</view>
+          <view>{{item.name}}</view>
+          <view>{{item.mobile}}</view>
+        </view>
+        <view class='left_bottom'>
+          {{item.area + item.detail}}
+        </view>
+      </view>
+      <view class='list_right' bindtap='edit' data-id='{{item.id}}'> 编辑</view>
+    </view>
+
+  </view>
+
+</view>

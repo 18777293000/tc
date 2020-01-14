@@ -1,0 +1,87 @@
+/* pages/roast/roast.wxss */
+page{
+  background:#f2f2f2;
+}
+.roast{
+  background: #fff;
+  margin:20rpx;
+  border-radius: 30rpx;
+}
+.roasttop{
+  border-bottom: 1px solid #f2f2f2;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  margin:0 20rpx;
+}
+.roasttop text{
+  display: block;
+  font-size: 36rpx;
+}
+.roasttop input{
+  height: 80rpx;
+  width:65%;
+  line-height: 80rpx;
+   color: #737373;
+  font-size: 32rpx;
+}
+.roasttop view{
+  color: #737373;
+  font-size: 32rpx;
+}
+.roastbottom{
+  margin:20rpx;
+  padding-bottom: 20rpx;
+}
+.roastbottom text{
+  font-size: 34rpx;
+}
+.roastbottom textarea{
+  width:650rpx;
+  font-size:36rpx;
+  color: #737373; 
+  height: 600rpx;
+  padding:20rpx;
+
+}
+.pics{
+  position: absolute;
+  left:60rpx;
+  top:858rpx;
+  font-size: 32rpx;
+  text-align: center;
+  color:#666;
+}
+.photo{
+width:150rpx;
+height:100rpx;
+display: block;
+margin:0 auto;
+}
+.camera{
+  width:185rpx;
+  height: 185rpx;
+  background: #e5e5e5;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+.hide{
+ display: none;
+}
+.show{ 
+ display: block;
+}
+.publish{
+  height:100rpx;
+  background: #e7d0ae;
+  margin:0 20rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color:#fff;
+  font-size: 32rpx;
+}
+ #ta{
+   line-height:60rpx;
+   letter-spacing:20rpx;
+ }

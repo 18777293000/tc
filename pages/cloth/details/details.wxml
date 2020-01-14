@@ -1,0 +1,112 @@
+<view class="container">
+  <block wx:for="{{list}}" key="{{index}}">
+    <view class="list">
+      <image src='{{item.img}}' class="left"></image>
+      <view class="right">
+        <view class='dormTitle' data-id="{{item.goods_id}}">
+          <text>{{item.name}}</text>
+        </view>
+        <view class='count'>
+          <text class='pricce'> 单价：￥{{item.price}}</text>
+          <!-- //数量加减 -->
+          <view class="stepper">
+            <!-- 减号 -->
+            <text class="{{minusStatus}}" bindtap="bindMinus" data-id="{{item.goods_id}}" data-index="{{index}}" data-total="{{item.price*item.count}}" data-price="{{item.price}}" data-count="{{item.count}}">-</text>
+            <!-- 数值 -->
+            <input type="number" bindchange="bindManual" value="{{item.count}}" data-index="{{index}}" data-id="{{item.goods_id}}" data-total="{{item.totalPrice}}" data-price="{{item.price}}" disabled />
+            <!-- 加号 -->
+            <text class="normal" bindtap="bindPlus" data-index="{{index}}" data-id="{{item.goods_id}}" data-total="{{item.totalPrice}}" data-price="{{item.price}}" data-count="{{item.count}}">+</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+</view>
+<form bindsubmit='formSubmit'>
+  <view class="from">
+    <view class="time">
+      <view class="section years">
+        <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+          <view class="picker">
+            <text class='tit'>预约时间</text> {{date}}
+          </view>
+        </picker>
+      </view>
+      <view class="section times">
+        <picker mode="time" value="{{time}}" start="20:00" end="21:30" bindchange="bindTimeChange">
+          <view class="picker pickertimer">
+            {{time}}
+          </view>
+        </picker>
+      </view>
+      <text>></text>
+      <!-- <image class="jt" src='./dry/img/img2.png'></image> -->
+    </view>
+    <view class="section year years">
+      <text class='tit'>所在地</text>
+      <input type="text" name="location" value="{{location}}" />
+    </view>
+    <view class="phone year">
+      <text class='tit'>详细地址</text>
+      <input type="text" name="address" value="{{address}}" />
+    </view>
+    <view class="phone year">
+      <text class='tit'>联系人</text>
+      <input type="text" name="username" value="{{username}}" />
+    </view>
+    <view class="phone year">
+      <text class='tit'>联系电话</text>
+      <input type="number" name="phone" value="{{phone}}" maxlength="11" />
+    </view>
+    <view class="phone year">
+      <text class='tits'>备注</text>
+      <input type="text" name="remark" value="{{remark}}" maxlength="200" />
+    </view>
+    <view class="phone year">
+      <text class='tits'>价格</text>
+      <input class="prices" type="number" name="price" value="￥{{total}}" disabled />
+    </view>
+    <view class="phone year"  bindtap="openrule">
+      <text class='tits'>优惠券</text>
+      <input class="prices" type="number" name="price" value="￥{{youhui}}" disabled />
+    </view>
+    <view class="phone year">
+      <text class='tits'>总计</text>
+      <input class="prices" type="number" name="price" value="￥{{zongji}}" disabled />
+    </view>
+    <button class="btns" form-type='submit'>提交订购</button>
+  </view>
+</form>
+<view>
+  <view class='tip-content-dialog' wx:if="{{showModal}}">
+    <view class="tip-dialog-view " scroll-y='true' style='height:70%;background: #ff4d51;text-align:center'>
+      <scroll-view scroll-y="true" style="height:100%;">
+        <wxs module="JSON">
+          module.exports = {
+            stringify: function(item) {
+              return JSON.stringify(item)
+            }
+          }
+        </wxs>
+        <radio-group bindchange="radioChange">
+          <radio color="#ff4d51" class="quan" wx:for="{{list1}}" wx:key data-id="{{item.id}}" value="{{JSON.stringify(item)}}">
+            <view style="display:flex">
+              <view>
+                <view style="font-size:40rpx">￥{{item.amount}}</view>
+                <view style="font-size:25rpx;margin-left:20rpx;">满{{item.limit}}可用</view>
+              </view>
+              <view>
+                <view style="font-size:40rpx;margin-left:45rpx;">{{item.name}}</view>
+                <view style="font-size:25rpx;margin-left:45rpx;">{{item.end_time}}到期</view>
+              </view>
+            </view>
+          </radio>
+        </radio-group>
+      </scroll-view>
+      <view class="guan" bindtap='closerule'>
+        <image src="/pages/index/images/qx.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

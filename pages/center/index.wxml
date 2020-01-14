@@ -1,0 +1,38 @@
+<!--pages/announce/announce.wxml-->
+<view style='position:relative;width:100vw;height:100vh'>
+  <view class="announce">
+    <image class="tbg" src='img/tbg.png'></image>
+  </view>
+  <view class="centers">
+    <navigator url="/pages/center/vote/vote">
+      <view class="tp tps">
+        <image class="tbg" src='img/t1.png'></image>
+        <text>投票</text>
+      </view>
+    </navigator>
+    <navigator url="/pages/center/roast/roast">
+    <view class="tp tc">
+      <image class="tbg" src='img/t2.png'></image>
+      <text>吐槽</text>
+    </view>
+    </navigator>
+    <navigator url="/pages/center/anonymity/anonymity">
+    <view class="tp nm">
+      <image class="tbg" src='img/t3.png'></image>
+      <text>树洞</text>
+    </view>
+    </navigator>
+    <navigator url="/pages/center/help/help">
+    <view class="tp qz">
+      <image class="tbg" src='img/t4.png'></image>
+      <text>求助</text>
+    </view>
+    </navigator>
+    <navigator url="/pages/center/sign/sign">
+    <view class="tp qd">
+      <image class="tbg" src='img/t5.png'></image>
+      <text>签到</text>
+    </view>
+    </navigator>
+  </view>
+</view>

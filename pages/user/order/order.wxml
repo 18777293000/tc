@@ -1,0 +1,332 @@
+<!--pages/user/order/order.wxml-->
+<view class="container">
+  <!-- <input placeholder='订单搜索' class="search" type="search">
+  <icon class="weui-icon-search_in-box" type="search" size="20" style="position:absolute;top:20px;left:35px;"></icon>
+  </input> -->
+  <view class="swiper-tab">
+    <view qq:for="{{navbar}}" qq:key="{{id}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" data-type="{{index}}" bindtap="swichNav">{{item}}</view>
+
+  </view>
+
+  <view hidden="{{currentTab!==0}}">
+
+    <block qq:for="{{order}}" qq:key="{{id}}">
+      <view class="goods">
+        <view class="title" qq:if="{{item.pay_type == 1 ||item.pay_type == 2 || item.pay_type == 4}}">
+          <text class="name">{{item.child.name}}</text>
+          <text qq:if="{{item.pay_status == 1}}">待付款</text>
+          <text qq:if="{{item.receipt_status == 1}}">待收货</text>
+        </view>
+        <view class="title" qq:if="{{item.pay_type == 3}}">
+          <text class="name">{{item.child[0].goods.goods_name}}</text>
+          <text qq:if="{{item.pay_status == 1}}">待付款</text>
+          <text qq:if="{{item.receipt_status == 1}}">待收货</text>
+        </view>
+        <view class="title" qq:if="{{item.pay_type == 5}}">
+          <text class="words">{{item.child[0].goods.name}}</text>
+          <text qq:if="{{item.pay_status == 1}}">待付款</text>
+          <text qq:if="{{item.receipt_status == 1}}">待收货</text>
+        </view>
+
+
+        <view class="middle" qq:if="{{item.pay_type == 1 || item.pay_type == 2 || item.pay_type == 4}}" data-type="{{pay_type}}">
+          <image src="{{item.child.pic}}" class="left"></image>
+          <view class="right">
+            <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child.price}}</text>
+              <text>{{item.count}}</text>
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child.num}}件商品</text>
+              <text>合计：{{item.total}}</text>
+            </view>
+            <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+            <view class="res" qq:if="{{item.receipt_status == 1}}" data-orderId="{{item.order_id}}" data-name="确认收货" bindtap="click">确认收货</view>
+            <view class="res" qq:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view>
+          </view>
+
+        </view>
+        <view class="middle" qq:if="{{item.pay_type == 3}}" data-type="{{pay_type}}">
+          <image src="{{item.child[0].goods.images}}" class="left"></image>
+          <view class="right" data-type="{{pay_type}}">
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child[0].price}}</text>
+
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child[0].num}}件商品</text>
+              <text>合计：{{item.child[0].num*item.child[0].price}}</text>
+            </view>
+            <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+          </view>
+
+        </view>
+        <view class="middle" qq:if="{{item.pay_type == 5}}" data-type="{{pay_type}}">
+          <image src="{{item.child[0].goods.image}}" class="left"></image>
+          <view class="right">
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child[0].goods.price}}</text>
+
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child[0].goods.count}}件商品</text>
+              <text>合计：{{item.child[0].goods.count*item.child[0].goods.price}}</text>
+            </view>
+            <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+            <view class="res" qq:if="{{item.receipt_status == 1}}" data-orderId="{{item.order_id}}" data-name="确认收货" bindtap="click">确认收货</view>
+            <view class="res" qq:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+  <view hidden="{{currentTab!==1}}">
+    <block qq:for="{{order}}" qq:key="{{id}}">
+      <view class="goods">
+        <view class="title" qq:if="{{item.pay_type == 1 || item.pay_type == 2 || item.pay_type == 4}}">
+          <text class="name">{{item.child.name}}</text>
+          <text class="state">待付款</text>
+        </view>
+        <view class="title" qq:if="{{item.pay_type == 3}}">
+          <text class="name">{{item.child[0].goods.goods_name}}</text>
+          <text class="state">待付款</text>
+        </view>
+        <view class="title" qq:if="{{item.pay_type == 5}}">
+          <text class="name">{{item.child[0].goods.name}}</text>
+          <text class="state">待付款</text>
+        </view>
+
+
+        <view class="middle" qq:if="{{item.pay_type == 1  || item.pay_type == 2 || item.pay_type == 4}}">
+          <image src="{{item.child.pic}}" class="left"></image>
+          <view class="right">
+            <text class="words">{{item.child.decoration}}</text>
+            <text class="color">{{item.child.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child.price}}</text>
+              <text>{{item.count}}</text>
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child.num}}件商品</text>
+              <text>合计：{{item.total}}</text>
+            </view>
+            <view class="res" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+
+
+          </view>
+
+        </view>
+        <view class="middle" qq:if="{{item.pay_type == 3}}">
+          <image src="{{item.child[0].goods.images}}" class="left"></image>
+          <view class="right" data-type="{{pay_type}}">
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child[0].price}}</text>
+
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child[0].num}}件商品</text>
+              <text>合计：{{item.child[0].num*item.child[0].price}}</text>
+            </view>
+            <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+          </view>
+
+        </view>
+        <view class="middle" qq:if="{{item.pay_type == 5}}">
+          <image src="{{item.child[0].goods.image}}" class="left"></image>
+          <view class="right" data-type="{{pay_type}}">
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child[0].goods.price}}</text>
+
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child[0].goods.count}}件商品</text>
+              <text>合计：{{item.child[0].goods.count*item.child[0].goods.price}}</text>
+            </view>
+            <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+          </view>
+
+
+        </view>
+
+      </view>
+    </block>
+  </view>
+  <view hidden="{{currentTab!==2}}">
+    <block qq:for="{{order}}" qq:key="{{id}}">
+      <view class="goods">
+        <view class="title" qq:if="{{item.pay_type == 1 || item.pay_type == 2 || item.pay_type == 4}}">
+          <text class="name">{{item.child.name}}</text>
+          <text class="state">待收货</text>
+        </view>
+        <view class="title" qq:if="{{item.pay_type == 3}}">
+          <text class="name">{{item.child[0].goods.goods_name}}</text>
+          <text class="state">待收货</text>
+        </view>
+        <view class="title" qq:if="{{item.pay_type == 5}}">
+          <text class="name">{{item.child[0].goods.name}}</text>
+
+          <text class="state">待收货</text>
+        </view>
+
+        <view class="middle" qq:if="{{item.pay_type == 1 || item.pay_type == 2 || item.pay_type == 4}}">
+          <image src="{{item.child.pic}}" class="left"></image>
+          <view class="right">
+            <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child.price}}</text>
+              <text>{{item.count}}</text>
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child.num}}件商品</text>
+              <text>合计：{{item.total}}</text>
+            </view>
+            <view class="res" data-orderId="{{item.order_id}}" data-name="确认收货" bindtap="click">确认收货</view>
+
+          </view>
+
+        </view>
+        <view class="middle" qq:if="{{item.pay_type == 3}}">
+          <image src="{{item.child[0].goods.images}}" class="left"></image>
+          <view class="right" data-type="{{pay_type}}">
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.child[0].price}}</text>
+
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.child[0].num}}件商品</text>
+              <text>合计：{{item.child[0].num*item.child[0].price}}</text>
+            </view>
+            <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+          </view>
+          <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+        </view>
+
+      </view>
+      <view class="middle" qq:if="{{item.pay_type == 5}}">
+        <image src="{{item.child[0].goods.image}}" class="left"></image>
+        <view class="right" data-type="{{pay_type}}">
+          <text class="color">{{item.color}}</text>
+          <view id="price">
+            <text class="price">{{item.child[0].goods.price}}</text>
+
+          </view>
+          <view class="totals">
+            <text class="total">共计{{item.child[0].goods.count}}件商品</text>
+            <text>合计：{{item.child[0].goods.count*item.child[0].goods.price}}</text>
+          </view>
+          <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+        </view>
+
+      </view>
+  
+  </block>
+</view>
+<view hidden="{{currentTab!==3}}">
+  <block qq:for="{{order}}" qq:key="{{id}}">
+    <view class="goods">
+      <view class="title" qq:if="{{item.pay_type == 1 || item.pay_type == 2 || item.pay_type == 4}}">
+        <text class="name">{{item.child.name}}</text>
+
+      </view>
+      <view class="title" qq:if="{{item.pay_type == 3}}">
+        <text class="name">{{item.child[0].goods.goods_name}}</text>
+
+      </view>
+      <view class="title" qq:if="{{item.pay_type == 5}}">
+        <text class="name">{{item.child[0].goods.name}}</text>
+
+      </view>
+
+      <view class="middle" qq:if="{{item.pay_type == 1 || item.pay_type == 2 || item.pay_type == 4}}">
+        <image src="{{item.child.pic}}" class="left"></image>
+        <view class="right">
+          <text class="words">{{item.decoration}}</text>
+          <text class="color">{{item.color}}</text>
+          <view id="price">
+            <text class="price">{{item.child.price}}</text>
+            <text>{{item.count}}</text>
+          </view>
+          <view class="totals">
+            <text class="total">共计{{item.child.num}}件商品</text>
+              <text>合计：{{item.total}}</text>
+          </view>
+
+          <view class="res" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view>
+
+        </view>
+
+      </view>
+      <view class="middle" qq:if="{{item.pay_type == 3}}">
+        <image src="{{item.child[0].goods.images}}" class="left"></image>
+        <view class="right" data-type="{{pay_type}}">
+          <text class="color">{{item.color}}</text>
+          <view id="price">
+            <text class="price">{{item.child[0].price}}</text>
+
+          </view>
+          <view class="totals">
+            <text class="total">共计{{item.child[0].count}}件商品</text>
+            <text>合计：{{item.child[0].count*item.child[0].price}}</text>
+          </view>
+          <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+        </view>
+
+      </view>
+      <view class="middle" qq:if="{{item.pay_type == 5}}">
+        <image src="{{item.child[0].goods.image}}" class="left"></image>
+        <view class="right" data-type="{{pay_type}}">
+          <text class="color">{{item.color}}</text>
+          <view id="price">
+            <text class="price">{{item.child[0].goods.price}}</text>
+
+          </view>
+          <view class="totals">
+            <text class="total">共计{{item.child[0].goods.count}}件商品</text>
+            <text>合计：{{item.child[0].goods.count*item.child[0].goods.price}}</text>
+          </view>
+          <view class="res" qq:if="{{item.pay_status == 1}}" data-orderId="{{item.order_id}}" data-name="去付款" bindtap="click">去付款</view>
+        </view>
+
+      </view>
+    </view>
+  </block>
+</view>
+<!-- <view hidden="{{currentTab!==4}}">
+    <block qq:for="{{order}}" qq:key="{{id}}">
+      <view class="goods">
+        <view class="title">
+          <text class="name">{{item.name}}</text>
+          <text class="state">{{item.state}}</text>
+        </view>
+        <view class="middle">
+          <image src="{{item.pic}}" class="left"></image>
+          <view class="right">
+            <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.price}}</text>
+              <text>{{item.count}}</text>
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.num}}件商品</text>
+              <text>合计：{{item.total}}</text>
+            </view>
+            <view class="res" bindtap='sure' data-name='{{item.res}}'>{{item.res}}</view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+    <navigator url='/pages/user/assess/assess'>4444</navigator>
+  </view> -->
+</view>

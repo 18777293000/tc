@@ -1,0 +1,169 @@
+page{
+  background:rgb(236, 236, 236);
+}
+.banner{
+ height: 100%;
+ 
+} 
+.imgs{
+  width:100%;
+  height:100%;
+}
+swiper {
+width:100%;
+height:300rpx;
+}
+.express{
+  padding-top:30rpx;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background:#fff;
+  height:210rpx;
+  margin-bottom:20rpx;
+}
+.daiqu,.jijian{
+  width:330rpx;
+  height:150rpx;
+  border-radius:8rpx;
+}
+.daiqu{
+  margin:0rpx 15rpx 30rpx 30rpx;
+}
+.jijian{
+ margin:0rpx 30rpx 30rpx 15rpx;
+}
+
+.price{
+  background:#fff;
+  padding-bottom: 30rpx;
+}
+/* .priceTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:96rpx;
+}
+.priceTitle text:nth-child(1){
+  display:block;
+  width:100rpx;
+  background:rgb(231, 230, 230);
+  height:2rpx;
+}
+.priceTitle .line {
+width:116rpx;
+height:2rpx;
+background:#f2f2f2;
+margin:0 8rpx;
+} */
+.server_top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30rpx 0;
+  font-size:26rpx; 
+  color: #747474;
+}
+.line{
+  width: 116rpx;
+  height: 1rpx;
+  background: #f2f2f2;
+  margin: 0 8rpx;
+}
+.priceTitle text:nth-child(2){
+  display:block;
+  margin:0 15rpx;
+  color:#737373;
+  font-size:24rpx;
+  width:100rpx;
+  height:25rpx;
+
+
+}
+.priceTitle text:nth-child(3){
+  display:block;
+  width:100rpx;
+  background:rgb(231, 230, 230);
+  height:2rpx;
+}
+.table {
+  border: 1px solid #cccccc;
+  margin:0  40rpx;
+  margin-bottom:40rpx;
+  border-radius:15rpx;
+}
+.tr{
+  display: flex;
+  width: 100%;
+}
+.ths{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border:1px solid #cccccc;
+  border-top:none;
+  font-size:28rpx;
+  border-radius:15rpx 15rpx 0rpx 0rpx;
+
+}
+.tr .ths{
+   border-bottom:0;
+}
+.trsfont{
+  color:#737373;
+}
+.th{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border:1px solid #cccccc;
+  font-size:28rpx;
+  padding:15rpx;
+}
+.sf{
+  width:193rpx;
+  height:84rpx;
+}
+.trs view:nth-child(1){
+    align-items: center;
+  text-align:center;
+  width:52%;
+  line-height:55rpx;
+  border-bottom:0;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.trs view:nth-child(2){
+  width:18%;
+  border-bottom:0;
+  border-left:0;
+  border-right:0;
+   display: flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  text-align:center;
+
+}
+.trs view:nth-child(3){
+width:18%;
+border-bottom:0;
+ display: flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  text-align:center;
+
+}
+.tr .thr{
+border-bottom:1px solid #ccc;
+}
+.slide-image{
+  width: 100%;
+}
+/* #add{
+  text-align:center;
+  display:flex;
+justify-content: center;
+} */

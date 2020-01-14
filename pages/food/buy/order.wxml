@@ -1,0 +1,62 @@
+<!--pages/food/buy/order.wxml-->
+<view class='body_box'>
+  <view class='order'>
+    <view>我的订单</view>
+    <view style='padding:20rpx 10rpx;box-sizing: border-box;border-bottom: 1px solid #f2f2f2'>{{store}}</view>
+    <view class='order_list'>
+      <view class='list' qq:for="{{goods_list}}" qq:key="{{index}}">
+        <view class='list_img'>
+          <image src="{{item.images}}"></image>
+        </view>
+        <view class="list_word">
+          <view style="font-size:32rpx;display: flex;justify-content: space-between;padding: 10rpx; box-sizing: border-box">
+            <view>{{item.goods_name}}</view>
+            <view>
+              <!-- <text style='text-decoration:line-through;'> ￥{{item.line_price}}</text> -->
+              <text>￥{{item.goods_price}}</text>
+            </view>
+          </view>
+          <view class="dish-item-count" style='margin:0'>
+            <view class="dish-item-count-text dish-item-tab">
+              <!-- <text style="font-size:22rpx;">X</text> -->
+              <view data-index="{{index}}" class="dish-item-count-minus" data-id="{{item.id}}" data-count="{{item.count}}"  bindtap="minusCount" data-lprice="{{item.line_price}}"data-spec="{{item.goods_sku_id}}"  data-mprice="{{item.goods_price}}">
+                <text class='add_num'>-</text>
+              </view>
+
+              <text style='margin-left: 10rpx;'>{{item.count}}</text>
+              <view class="dish-item-count-plus" data-count="{{item.count}}"  data-id="{{item.id}}" bindtap="addCount" data-index="{{index}}" data-lprice="{{item.line_price}}" data-spec="{{item.goods_sku_id}}" data-mprice="{{item.goods_price}}">
+                <text class='add_num'>+</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    
+    <view style='width: 100%;display: flex;justify-content: space-between;padding:20rpx 10rpx;box-sizing: border-box;'>
+      <view>桌号</view>
+      <view>{{board_id}}</view>
+    </view>
+    <view style='width: 100%;;padding:20rpx 10rpx;box-sizing: border-box;'>
+      <view>备注</view>
+      <view>
+        <textarea style='width:100%;height:120rpx;border:1rpx solid #f2f2f2;margin-top:20rpx;' placeholder='备注口味等' bindblur="change" data-name="texts"></textarea>
+      </view>
+    </view>
+    <!-- <view style='width: 100%;display: flex;justify-content: space-between;padding:20rpx 10rpx;box-sizing: border-box;'>
+          <view>餐具数量</view>
+          <view>￥2</view>
+      </view> -->
+
+
+  </view>
+  <view class='footer'>
+    <view style='display:flex;align-items: center'>
+      <view>合计：
+        <text style='color:#f1deb9'>￥{{total}}</text>
+      </view>
+      <view style='padding:10rpx;box-sizing: border-box;background:#e25858;color:white;border-radius: 20rpx;margin-left:400rpx;' bindtap="total">结算</view>
+    </view>
+  </view>
+</view>

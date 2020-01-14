@@ -1,0 +1,76 @@
+/* pages/sign/sign.wxss */
+page{
+  padding:0;
+  margin:0;
+  background: white
+}
+.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+.photo{
+width:150rpx;
+height:100rpx;
+display: block;
+margin:0 auto;
+}
+.pics{
+  position: absolute;
+  left:265rpx;
+  top:180rpx;
+  font-size: 32rpx;
+  text-align: center;
+  color:#666;
+}
+.pics text{
+padding-top:20rpx;
+display: block;
+}
+.camera{
+  position: relative;
+}
+.text,.address{
+  width:60rpx;
+  height:60rpx;
+  margin-bottom: 30rpx;
+}
+.orientation,.share{
+  display:flex;
+  color:#808080;
+  font-size:32rpx;
+}
+.orientation{
+  border-bottom: 1px solid #e5e5e5;
+  margin:30rpx 20rpx 0;
+}
+.share{
+  margin:30rpx 20rpx 0;
+}
+.text,.address{
+  margin-right:20rpx;
+}
+.word{
+  height:420rpx;
+  width:100%;
+  line-height:50rpx;
+}
+.publish{
+  height:100rpx;
+  background: #e7d0ae;
+  margin:0 20rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color:#fff;
+  font-size: 32rpx;
+}
+.hide{
+ display: none;
+}
+.show{ 
+ display: block;
+}

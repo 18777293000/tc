@@ -1,0 +1,154 @@
+/* pages/food/evaluate/evaluate.wxss */
+.all {
+  margin: 20rpx;
+  font-size: 14px;
+  width: 150rpx;
+  display: inline-block;
+  float: left;
+  height: 20px;
+}
+
+.num {
+  color: #caad81;
+  width: 100rpx;
+  display: inline-block;
+  float: left;
+  margin: 20rpx;
+  margin-left: 0px;
+  height: 20px;
+}
+.dish-item-last-money{
+  color: #999;
+  text-decoration: line-through;
+  font-size: 24rpx;
+  padding-left: 20rpx;
+
+}
+.star image {
+  width: 15px;
+  height: 15px;
+  margin: 10px 5px;
+}
+
+.assess {
+  width: 100%;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.assess text {
+  padding: 5px 10px;
+  text-align: center;
+  border: 1px solid #878787;
+  border-radius: 15px;
+  background-color: #fff;
+  color: #878787;
+  float: left;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.sel {
+  text-align: left;
+}
+
+radio {
+  display: inline-block;
+  margin: 3px;
+  width: 5px;
+  height: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.pic {
+  color: #878787;
+  margin-left: 20px;
+}
+
+/*评价详情*/
+
+/* .cont{
+  padding-top:10px;
+  padding-bottom:0px;
+} */
+
+.cont view {
+  text-align: left;
+  padding: 10px;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 0px;
+}
+
+.cont  .section {
+  text-align: center;
+  padding: 0px;
+  display: inline-block;
+  /*****/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cont .picture {
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.cont .picture image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.cont .person {
+  width: 60%;
+  height: 30px;
+  padding-top: 0px;
+}
+
+.cont .picture .time {
+  display: inline-block;
+  vertical-align: top;
+  color: #717171;
+  font-size: 10px;
+  margin-top: 0px;
+}
+
+.cont  .source {
+  width: 100%;
+  padding-left: 0px;
+  font-size: 10px;
+  color: #878787;
+}
+
+.cont  .source image {
+  width: 10px;
+  height: 10px;
+  margin: 0px 3px;
+  border-radius: 0px;
+  display: inline-block;
+}
+
+.cont .say {
+  text-align: lefft;
+  width: 80%;
+  padding: 5px;
+  padding-left: 0px;
+  margin-left: 40px;
+  font-size: 12px;
+  padding-top: 0px;
+  color: #2c2c2c;
+}
+
+.word {
+  line-height: 14px;
+}
+
+.cont .say image {
+  width: 100px;
+  height: 100px;
+  margin-top: 5px;
+}

@@ -1,0 +1,41 @@
+<!--pages/user/personal/index.wxml-->
+<view id='page'>
+  <form bindsubmit='formSubmit'>
+    <view class='personal_box'>
+      <view class='personal_img' bindtap='uploadimg'>
+          <!-- <open-data type="userAvatarUrl"/> -->
+          <image src='{{avatar}}'></image>
+      </view>
+      <view class='add'>点击切换头像</view>
+      <view class="list">
+        <view class='list_line'>
+          <text style='flex:3'>昵称：</text>
+          <input style='flex:7' value='{{nickname}}' type='text' name="names"></input>
+        </view>
+
+         <view class='list_line'>
+          <text style='flex:3'>性别：</text>
+          <!-- <input style='flex:7' value='{{gender}}' type='text' name="sex"></input> -->
+         <picker bindchange="bindPickerChange"  value="{{gender}}" range="{{array}}">
+    <view class="picker">
+   {{gender}}
+    </view>
+  </picker>
+        </view>
+
+         <view class='list_line'>
+          <text style='flex:3'>年龄：</text>
+          <input style='flex:7' value='{{age}}' type='number' name="age"></input>
+        </view>
+
+         <view class='list_line'>
+          <text style='flex:3'>联系电话：</text> 
+          <input style='flex:7' value='{{mobile}}' type='number' name="telphone"></input>
+        </view>
+
+      </view>
+
+    </view>
+    <button class='save'  form-type='submit'>保    存</button>
+  </form>
+</view>

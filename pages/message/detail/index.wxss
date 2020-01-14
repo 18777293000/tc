@@ -1,0 +1,442 @@
+/* pages/message/detail/index.wxss */
+
+/* pages/message/datails/datails.wxss */
+/*@import "../../res/wxParse/wxParse.wxss";*/
+.container {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 80rpx;
+}
+
+.title {
+  font-weight: 550;
+  color: #000;
+  font-size: 36rpx;
+}
+
+.head {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10rpx 10rpx 0 10rpx;
+}
+
+.head image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  /* margin:10rpx; */
+}
+
+.middle {
+  width: 230rpx;
+  margin-right: 260rpx;
+  margin-left: 20rpx;
+}
+
+.middle text {
+  padding: 10rpx;
+  color: #737373;
+  font-size: 30rpx;
+}
+
+.middle .owner {
+  color: #dfc7a7;
+  display: block;
+  font-size: 30rpx;
+}
+
+.building {
+  color: #fff;
+  background: #dfc7a7;
+  display: inline-block;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  line-height: 30rpx;
+  height: 30rpx;
+  text-align: center;
+  width: 80rpx;
+  margin-top: 30rpx;
+}
+
+.word text {
+  line-height: 60rpx;
+  color: #000;
+  font-size: 30rpx;
+}
+.word image {
+ width: 100%;
+}
+
+/*评论*/
+
+.assess {
+  display: flex;
+  justify-content: flex-start;
+  /* padding: 10rpx; */
+  box-sizing: border-box;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+.lefts {
+  width: 80rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.rights {
+  width:calc(100% - 100rpx);
+}
+
+.flor {
+  display: block;
+  width: 100%;
+  text-align: right;
+  color: #737373;
+}
+
+.name {
+  color: #dfc7a7;
+  display: block;
+}
+
+.words {
+  display: block;
+  margin: 16rpx 0rpx;
+}
+
+.detalis {
+  width: 100%;
+  background: #f2f2f2;
+  padding: 0 0 10rpx 20rpx;
+  margin-right: 10rpx;
+}
+
+.fish {
+  color: #dfc7a7;
+  margin-right: 10rpx;
+  font-size: 30rpx;
+}
+
+.ass {
+  line-height: 55rpx;
+}
+
+.date {
+  text-align: left;
+  color: #737373;
+  line-height: 40rpx;
+}
+
+.rewords {
+  text-align: center;
+  border: 1px solid #737373;
+  color: #737373;
+  padding: 5rpx 20rpx;
+  border-radius: 15px;
+}
+
+.bot {
+  margin: 20rpx 0rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.foot {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.foot input {
+  width: 100%;
+  background: #f2f2f2;
+  border-radius: 40rpx;
+  margin-right: 130rpx;
+  padding: 5rpx;
+  margin-left: 10rpx;
+}
+
+.foot image {
+  width: 45rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+
+/*点赞*/
+
+.good {
+  position: fixed;
+  bottom: 30rpx;
+  left: 605rpx;
+}
+/* 
+button::after {
+  color: rgba(0, 0, 0, 0);
+  background-color: #fff;
+  border: none;
+}
+button::before {
+  color: rgba(0, 0, 0, 0);
+  background-color: #fff;
+  border: none;
+} */
+
+button {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  line-height: 0rpx;
+  border-radius: 5px;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  margin: 0rpx;
+  padding: 0rpx;
+  /* background: #fff; */
+  border: none;
+}
+
+/*******底部弹框*********/
+
+/**index.wxss**/
+
+.pupContentBG {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+}
+
+.pupContent {
+  width: 100%;
+  /* background: pink;
+  position: absolute; */
+  bottom: 0;
+  /* box-shadow: 0 0 10rpx #333; */
+  height: 100rpx;
+  z-index: 999;
+  overflow: auto;
+}
+
+.display {
+  width: 500rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.pupContent1 {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 200rpx;
+  line-height: 200rpx;
+  background: red;
+}
+.title{
+   width: 100%;
+    height: 2rpx;
+   line-height: 2rpx;
+   padding: 0 15px;
+   box-sizing: border-box;
+   font-weight: bold;
+}
+.title text{
+  font-weight: 100;
+}
+.content{
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+.cons{
+  background-color: #eee;
+  height: 5rpx;
+  width: 100%;
+  margin-top: 30rpx
+}
+.con{
+   background-color: #eee;
+  height: 15rpx;
+  width: 100%;
+  margin-top: 50rpx
+}
+.list{
+   padding:30rpx;
+   box-sizing: border-box;
+}
+radio .wx-radio-input{
+  width: 15px;
+  height: 15px;
+  font-size: 10px;
+}
+.list view{
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+
+}
+.list view text{
+ padding-right: 10px;
+
+}
+.butt{
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin: 50px auto 0;
+  width: 80%;
+  background: #e7d0ae;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+/* 设置显示的背景 */
+
+.showBG {
+  display: block;
+}
+
+.hideBG {
+  display: none;
+}
+
+/* 弹出或关闭动画来动态设置内容高度 */
+
+@keyframes slideBGtUp {
+  from {
+    background: transparent;
+  }
+
+  to {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes slideBGDown {
+  from {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  to {
+    background: transparent;
+  }
+}
+
+/* 显示或关闭内容时动画 */
+
+.openBG {
+  animation: slideBGtUp 0.5s ease-in both;
+  /* animation-fill-mode: both 动画将会执行 forwards 和 backwards 执行的动作。 */
+}
+
+.closeBG {
+  animation: slideBGDown 0.5s ease-in both;
+  /* animation-fill-mode: both 动画将会执行 forwards 和 backwards 执行的动作。 */
+}
+
+/* 设置显示内容 */
+
+.showContent {
+  display: block;
+}
+
+.hideContent {
+  display: none;
+}
+
+/* 弹出或关闭动画来动态设置内容高度 */
+
+@keyframes slideContentUp {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 400rpx;
+  }
+}
+
+@keyframes slideContentDown {
+  from {
+    height: 400rpx;
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+/* 显示或关闭内容时动画 */
+
+.open {
+  animation: slideContentUp 0.5s ease-in both;
+  /* animation-fill-mode: both 动画将会执行 forwards 和 backwards 执行的动作。 */
+}
+
+.close {
+  animation: slideContentDown 0.5s ease-in both;
+  /* animation-fill-mode: both 动画将会执行 forwards 和 backwards 执行的动作。 */
+}
+
+.release {
+  display: flex;
+  align-items: flex-end; /*底部对齐*/
+  justify-content: space-between; /*两端对齐*/
+  box-sizing: border-box;
+  width: 100%;
+  padding: 18px 6px;
+  background-color: #f7f8f7;
+  font-size: 28rpx;
+  z-index: 999;
+  margin: auto;
+}
+
+.release .text {
+  width: 604rpx;
+  min-height: 34rpx;
+  max-height: 102rpx; /*最多显示三行*/
+  border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
+  border-style: solid;
+  border-color: #fff;
+  line-height: 34rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+  border-radius: 4rpx;
+}
+
+.release .submit {
+  width: 116rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  color: #6c0;
+}
+.share{
+position: relative;
+}
+.share button{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+}

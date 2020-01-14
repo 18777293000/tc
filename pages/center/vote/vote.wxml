@@ -1,0 +1,33 @@
+<!--pages/vote/vote.wxml-->
+<form bindsubmit='formSubmit'>
+  <view class='tptheme'>
+    <view style='font-size:32rpx;color:#c9ad7d;width:150rpx;'>主题：</view>
+    <input class='theme' bindchange='theme' name="theme" type="text" value='{{theme}}' placeholder='输入主题'></input>
+  </view>
+  <view class="qdsection">
+   
+    <text style='font-size: 32rpx;display:block;color:#c9ad7d;margin-top:26rpx;'>选项：</text>
+    <view>
+      <view class='box' qq:for='{{array}}' qq:key=''>
+        <input type='text' class='b-ipt' placeholder='请输入' data-idx='{{index}}' value='{{inputVal[index]}}' bindinput='getInputVal' name='selects'/>
+        <view class='del' bindtap='delInput' data-idx='{{index}}'>X</view>
+      </view>
+      <view class='add tp-add' bindtap='addInput'>添加选项</view>
+    </view>
+
+  </view>
+  <view class="section">
+    <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+      <view class="picker">
+        <text style='font-size:32rpx;color:#c9ad7d;display:block;margin-right:350rpx;'>截止日期</text> {{date}}
+        <image src='img/img2.png' style='margin-left:10rpx;width:40rpx;height:40rpx;'></image>
+      </view>
+    </picker>
+  </view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" qq:for="{{items}}" qq:key style='margin-right:60rpx;'>
+      <radio value="{{item.name}}" checked="{{item.checked}}"/> {{item.value}}
+    </label>
+  </radio-group>
+  <button class="btns" form-type='submit'>发布</button>
+</form>

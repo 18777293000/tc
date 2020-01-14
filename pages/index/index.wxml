@@ -1,0 +1,110 @@
+
+<view class="container">
+  <view class="banner" hidden="{{show}}">
+    <swiper class="" indicator-dots="true" autoplay="true" circular="{{true}}" interval="3000" duration="1000" indicator-color="#fff" indicator-active-color="#e2e2e2">
+      <block qq:for-item="banner" qq:for="{{banner}}" qq:key="this">
+        <swiper-item item-id="{{index}}">
+          <navigator data-id="{{index}}" url="{{banner.url}}">
+             <image class="slide-image" mode="aspectFill" src="{{banner.image}}" data-id="{{index}}"></image>
+           </navigator>   
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+
+  <view class="service">
+    <view class='server_top'>
+      <text class='line'></text>
+      <text>服务类型</text>
+      <text class='line'></text>
+    </view>
+    <view class='server_bot'>
+    <view class='ser_bot' style='width:100%;'>
+        <block qq:for="{{menus}}" qq:key="key">
+          <view  qq:if="{{item.status == 1}}"  class='ser_bot_kd' style='width:25%'>
+            <view class='' hover-class="none" data-url='{{item.url}}' bindtap='go' open-type='switchTab'>
+              <image src='{{item.icon}}'></image>
+              <view>{{item.name}}</view>
+
+            </view>
+
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+
+   <view class="service">
+    <view class='server_top'>
+      <text class='line'></text>
+      <text>店家推荐</text>
+      <text class='line'></text>
+    </view>
+    <view class='server_bot' >
+
+        <view class='server_bot_box' qq:for="{{list}}" bindtap='details' data-id='{{item.seller_id}}'>
+          <view class='box_top'>
+            <image src='{{item.image}}'></image>
+          </view>
+          <view class='box_bottom'>{{item.store_name}}</view>
+        </view>
+    </view>
+  </view> 
+  <ad unit-id="952f8afa50266adf66c44e6b289e669f"></ad>
+  <!-- 红包浮窗 -->
+  <view class="fu" bindtap="openrule"  qq:if="{{hb!=0}}">
+    <image class="tu" src="/pages/index/images/hb.png "></image>
+  </view>
+  <!-- 新用户弹窗 -->
+  <view  qq:if="{{hb!=0}}">
+    <view class='tip-content-dialog' qq:if="{{showModal}}">
+      <view class="tip-dialog-view " scroll-y='true' style='height:60%;background: #ff4d51;text-align:center'>
+        <view style="width:100%;">
+          <view>
+            <text style="font-size:35rpx;color:#fff">——1元超值大礼包——</text>
+          </view>
+          <text style="font-size:40rpx;color:#fff">来啦!</text>
+        </view>
+        <view class="quan">
+          <view style="flex:2;">
+           <view style="font-size:40rpx;color:#fd4d4d;">￥{{hongbao[0].price}}</view>
+           <view style="font-size:25rpx;">全平台通用</view>
+          </view>
+          <view style="flex:3;">
+            <view style="font-size:30rpx;">平台认证券</view>
+            <view style="font-size:25rpx;">个人认证后即可使用</view>
+          </view>
+          <view style="flex:2">
+            <image class="biao" src="/pages/index/images/biao.png"></image>
+            <image class="qg" src="/pages/index/images/qg.png" id="{{hongbao[0].id}}" bindtap="qg"></image>
+          </view>
+        </view>
+        <view style="color:#fff">升级成为跑鹿儿1元可获得超级礼包组合</view>
+        <view class="quan">
+          <view style="flex:2">
+           <view style="font-size:40rpx;color:#fd4d4d;">￥{{hongbao[1].price}}</view>
+           <view style="font-size:25rpx;">全平台通用</view>
+          </view>
+          <view style="flex:3">
+            <view style="font-size:30rpx;">平台认证券</view>
+            <view style="font-size:25rpx;">个人认证后即可使用</view>
+          </view>
+          <view style="flex:2;">
+            <view style="flex:2">
+            <image class="biao" src="/pages/index/images/biao1.png"></image>
+            <image class="qg" src="/pages/index/images/qg.png" id="{{hongbao[1].id}}" bindtap="qg"></image>
+          </view>
+          </view>
+        </view>
+        <view class="guan" bindtap='closerule'>
+          <image src="../index/images/qx.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!--index.wxml-->

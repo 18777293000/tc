@@ -1,0 +1,286 @@
+<view class="container">
+  <view class="title">
+    <view class="store">
+      <image src="{{info.image}}"></image>
+      <view class="storeName">
+        <view>{{info.store_name}}</view>
+      </view>
+    </view>
+    <text class="notice">{{info.notice}}</text>
+  </view>
+  <view class="swiper-tab">
+    <view qq:for="{{navbar}}" qq:key="{{id}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" bindtap="swichNav" data-type="{{index}}">{{item}}</view>
+  </view>
+  <view hidden="{{currentTab!==0}}">
+    <view class="menu-wrp">
+      <scroll-view scroll-y="true" class="left-side">
+        <!--菜单列表-->
+        <view qq:for="{{menus}}" qq:key="id" qq:for-item="menu" class="menu-item {{selectMenu==index ? 'menu-item1' : ''}}" data-idx="{{index}}" data-id="{{menu.id}}" data-tag="{{menu.tag}}" bindtap="selectMenu" data-item-index="{{index}}">
+
+          <view class="menu-item-wrp">
+            <view>
+              <text class="m-item-title {{selectMenu==index ? 'm-item-title1' : ''}}">{{menu.name}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="menu-footer"></view>
+      </scroll-view>
+      <scroll-view scroll-y="true" scroll-into-view="{{toView}}" class="right-side">
+        <view class="dish-header"></view>
+        <block qq:for="{{menus}}" qq:key="id" qq:for-item="menu" qq:for-index="parentIndex">
+          <view data-idx="{{index}}" id="order{{parentIndex}}" data-id="{{menu.id}}" data-idx='{{index}}'>
+            <view class="dish-category-title">{{menu.name}}</view>
+            <block qq:for="{{menu.child}}" qq:key="id" qq:for-item="dish">
+              <view class="dish-item" data-index="{{index}}">
+                <view class="dish-item-wrp">
+                  <view class="dish-item-pic">
+                    <!-- <image class="image" src="{{dish.image}}" bindtap='next' data-id="{{dish.id}}" /> -->
+                    <image class="image" src="{{dish.image}}" data-id="{{dish.id}}" />
+                  </view>
+                  <view class="dish-item-info" style="">
+                    <view>
+                      <text class="dish-item-name">{{dish.name}}</text>
+                    </view>
+                    <view>
+                      <text class="dish-item-sales">月销量{{dish.sales}}</text>
+                    </view>
+                    <view>
+                      <text class="dish-item-money">￥{{dish.store_price}}</text>
+                      <!-- <text class="dish-item-last-money" style="color:#000;display:inline-block;font-size:20rpx;text-decoration:line-through;margin-left:5rpx;">{{dish.line_price}}</text> -->
+                    </view>
+                  </view>
+
+                  <view class="dish-item-count" style="" hidden="{{dish.spec_type==2}}">
+                    <view class="dish-item-tab">
+                      <view hidden="{{dish.count == 0}}" data-index="{{index}}" class="dish-item-count-minus" data-id="{{dish.id}}" data-cid="{{menu.id}}" bindtap="minusCount">
+                        <text class='add_num'>-</text>
+                      </view>
+                    </view>
+                    <view class="dish-item-count-text dish-item-tab">
+                      <text hidden="{{dish.count == 0}}" style='margin-left: 10rpx;'>{{dish.count}}</text>
+                    </view>
+                    <view class="dish-item-count-plus" data-count="{{dish.count}}" data-name="{{dish.name}}" data-id="{{dish.id}}" data-cid="{{menu.id}}" bindtap="addCount" data-index="{{index}}">
+                      <text class='add_num'>+</text>
+                    </view>
+                  </view>
+                  <view class="choose" hidden="{{dish.spec_type==1}}" bindtap="choose" data-index="{{index}}" data-idx="{{index}}" data-id="{{dish.id}}" data-specdata="{{dish.specData}}" data-name="{{dish.name}}">
+                    <text class="">选规格</text>
+                  </view>
+                </view>
+              </view>
+            </block>
+
+          </view>
+        </block>
+        <view class="dish-footer"></view>
+      </scroll-view>
+      <!-------首次购物车显示------->
+     
+      <!-------二次购物车显示------->
+      <view class="car" qq:if="{{ifShowCar}}">
+        <view qq:if="{{shop_list}}">
+          <!-- <view> -->
+          <view style='background: #f2f2f2;text-align: right;display:inline-block;width:100%;padding:6rpx 0rpx;' bindtap="delete">
+            <image src="./img/delete.png" style="width:24rpx;height:24rpx;margin-right:5rpx;vertical-align:middle;"></image>清空购物车</view>
+          <view style='display:flex;justify-content: space-between;align-items: center;padding: 10rpx;box-sizing: border-box' qq:for="{{shops_arr}}">
+
+            <view>{{item.goods_name}}</view>
+            <view>x{{item.count}}</view>
+          </view>
+        </view>
+
+        <view class="cart-tab-wrp">
+          <view class="cart-item-total cart-tab-item" bindtap='shop_list'>
+            <view class="cart-item-icon-wrp">
+              <image class="cart-item-icon" src='/pages/food/details/image/car.png' />
+              <text hidden="{{total.count}}" class="cart-item-total-num bc_red">{{total.count}}</text>
+            </view>
+            <text class="cart-item-total-price">￥{{total.money}}</text>
+            <text class="cart-item-total-price" qq:if="{{total.lmoney}}" style=' text-decoration: line-through;padding-left:20rpx;color:#fff;font-size:22rpx;'>{{total.lmoney}}</text>
+          </view>
+          <view class="cart-tab-item">
+            <text class="cart-tab-item-btn" data-count="{{total.count}}" data-money="{{total.money}}" data-lmoney="{{total.lmoney}}" bindtap="account">去结算</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+
+
+
+  </view>
+  <view hidden="{{currentTab!==1}}">
+    <!-- 评价 -->
+    <view style="clear:both;overflow:hidden;">
+      <text class="all">综合评分:</text>
+      <text class="num" style='font-size:32rpx;'>{{info.score}}分</text>
+      <view class="stars">
+        <block qq:for="{{info.score}}" qq:key="{{item}}">
+          <image src='image/foods_08.png'></image>
+        </block>
+        <block qq:for="{{5-item.likes}}" qq:key="{{item}}">
+          <image src='image/foods_10.png'></image>
+        </block>
+      </view>
+      <view class="assess">
+        <text>全部{{info.comments}}</text>
+        <text>好评{{info.likes}}</text>
+        <text>差评{{info.dislikes}}</text>
+      </view>
+      <!-- <view class="sel" style="text-align:left">
+        <radio/>
+        <text class="pic" style='font-size:32rpx;'>有图评价</text>
+      </view> -->
+      <block qq:for="{{assess_list}}" qq:key="id" data-index="{{index}}" data-item="{{item}}">
+        <view class="cont">
+          <view class="picture">
+            <image src="{{item.user.avatar}}" />
+            <view class="person">
+              <text style='font-size:28rpx;'>{{item.user.nickname}}</text>
+              <view class="source">
+                评分
+                <view class="stars">
+                  <block qq:for="{{item.comments}}" qq:key="{{item}}">
+                    <image src='image/foods_08.png'></image>
+                  </block>
+                  <block qq:for="{{5-item.comments}}" qq:key="{{item}}">
+                    <image src='image/foods_10.png'></image>
+                  </block>
+                </view>
+              </view>
+            </view>
+            <text class="time">2019/3/10</text>
+          </view>
+          <view class="say">
+            <text class="word">
+               
+               {{item.content}}
+               </text>
+            <image src="{{item.image}}" hidden='{{item.image == ""}}' />
+          </view>
+
+        </view>
+      </block>
+    </view>
+  </view>
+  <view hidden="{{currentTab!==2}}">
+    <!-- 详情 -->
+    <view class="details">
+      <view class="table">
+        <!-- <view class="tr bg-w">
+             <view class="th">head1</view>
+             <view class="th">head2</view>
+            </view> -->
+
+        <view class="tr">
+          <view class="td bus">商家名称</view>
+          <view class="td tel">{{particulars.store_name}}</view>
+        </view>
+        <view class="tr">
+          <view class="td bus">电话</view>
+          <view class="td tel">{{particulars.store_tel}}</view>
+        </view>
+        <view class="tr">
+          <view class="td bus">地址</view>
+          <view class="td tel">{{particulars.store_address}}</view>
+        </view>
+        <view class="tr">
+          <view class="td bus">营业时间</view>
+          <view class="td tel">{{particulars.hours_start_time}}至{{particulars.hours_end_time}}</view>
+        </view>
+
+      </view>
+      <text class="everment">
+          商家环境
+         </text>
+      <!---图片滑块--->
+      <scroll-view class="recommend_scroll_x_box" scroll-x="true">
+        <view class="recommend_hot_box" qq:for="{{particulars.ambient}}" qq:key="{{id}}">
+          <image src="{{item}}"></image>
+        </view>
+      </scroll-view>
+      <text class="everment">
+          商家资质
+         </text>
+      <view class="aptitude">
+        <image src="{{particulars.food_image}}" class="aptitude_image"></image>
+      </view>
+    </view>
+  </view>
+  <!-----选择蛋糕---->
+  <view class='model' qq:if="{{ifShow}}">
+    <view class='specification_box'>
+      <view class='box_nav'>
+        <view style="flex:9;text-align:center">{{name}}</view>
+        <view style='flex:1;text-align:right' bindtap='close'>X</view>
+      </view>
+      <block qq:for="{{specList}}">
+        <view class='box_t'>
+          <view class='box_t_nav'>{{item.group_name}}</view>
+          <view class='t_content'>
+            <view qq:for="{{item.spec_items}}" qq:for-item="spec_items" qq:key="cake">
+              <!--<view class="t_content_list  {{index==idxx?'_left':'left'}}"  data-value="{{spec_items.spec_value}}"
+             bindtap='godIndex' data-index="{{index}}"  data-id="{{spec_items.item_id}}">{{spec_items.spec_value}}
+             </view>-->
+              <view class="t_content_list  {{index==ispec_items.spec_value?'_left':'left'}}" data-value="{{spec_items.spec_value}}" data-spec="{{spec_items.spec_value}}" bindtap="changeSpec" data-index="{{index}}" data-id="{{spec_items.item_id}}">{{spec_items.spec_value}}
+              </view>
+
+
+            </view>
+          </view>
+        </view>
+      </block>
+
+
+      <view class='footer_line'>
+        <view class='footer_left'>
+          <!-- <text style='color:#e25858'>￥{{goods_price}}</text> -->
+          <text style='color:#e25858'>￥{{store_price}}</text>
+          <text style='color:#fff'>({{bang}}，{{fen}})</text>
+        </view>
+        <view class='footer_right' bindtap='changeprice'>加入购物车</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-----选择蛋糕弹框---->
+<view class='model' qq:if="{{ifShow}}">
+  <view class='specification_box'>
+    <view class='box_nav'>
+      <view style="flex:9;text-align:center">{{name}}</view>
+      <view style='flex:1;text-align:right' bindtap='close'>X</view>
+    </view>
+    <block qq:for="{{specList}}" qq:for-item="attr" qq:for-index="attr_idx" qq:key="key">
+      <view class='box_t'>
+        <view class='box_t_nav'>{{attr.group_name}}</view>
+        <view class='t_content'>
+          <view qq:for="{{attr.spec_items}}" qq:for-item="spec_items" qq:key="cake">
+            <view qq:if="{{spec_items.checked}}">
+              <view class="t_content_list _left" data-group-id="{{attr.group_id}}" data-item-id="{{spec_items.item_id}}" data-index="{{index}}" data-attr_idx="{{attr_idx}}" bindtap="changespec">{{spec_items.spec_value}}
+              </view>
+            </view>
+            <view qq:else>
+              <view class="t_content_list left" data-group-id="{{attr.group_id}}" data-item-id="{{spec_items.item_id}}" data-index="{{index}}" data-attr_idx="{{attr_idx}}" bindtap="changespec">{{spec_items.spec_value}}
+              </view>
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </block>
+
+
+
+
+
+    <view class='footer_line'>
+      <view class='footer_left'>
+        <text style='color:#e25858'>￥{{store_price}}</text>
+        <text style='color:#fff'>({{sku}})</text>
+      </view>
+      <view class='footer_right' bindtap='changeprice'>加入购物车</view>
+    </view>
+  </view>
+</view>
+

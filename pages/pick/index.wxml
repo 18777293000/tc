@@ -1,0 +1,139 @@
+<!--pages/pickgoods/pickgoods.wxml-->
+<view class='gsPickGoods'>
+  <form bindsubmit="formSubmit">
+    <view class='gsPickGoodsTop'>
+      <view class='gsPickGoodsNumber' style="display:flex;align-items:center">
+        <label>取货码:</label>
+        <input type='text' class="gsPickGoodsNumberInput" placeholder='请输入取货码' name="gsPickGoodsNumber"></input>
+      </view>
+      <view class='gsName' style="display:flex;align-items:center">
+        <label>姓名:</label>
+        <input type='text' class="gsNameInput" name="gsName"></input>
+      </view>
+      <view class='gsPhone' style="display:flex;align-items:center">
+        <label>电话:</label>
+        <input type='text' type="number" class="gsPhoneInput" name="gsPhone"></input>
+      </view>
+      <view class='gsAdress' style="display:flex; align-items:center">
+        <label>送达地址:</label>
+        <!-- <textarea type='text' class="gsAdressArea" maxlength="100" name="gsAdress"></textarea> -->
+        <input class="gsAdressArea" type='text' placeholder='例：3-208' name="gsAdress"></input>
+      </view>
+      <view class="time">
+        <view class="section years">
+           <picker mode="date" value="{{tsaddtime}}" bindchange="bindtsaddtime" start="{{current}}">
+            <view class="picker">
+              <text class='tit'>取货时间{{tsaddtime}}</text> 
+            </view>
+          </picker> 
+          <!-- <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">
+              取货时间: {{date}}
+            </view>
+          </picker> -->
+        </view>
+        <view class="section times">
+          <picker mode="time" value="{{time}}"  bindchange="bindTimeChange">
+            <view class="picker">
+              当前选择: {{time}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='gsCard'>
+        <text>身份证或一卡通上传：</text>
+        <view class='gsSendPicture' bindtap="uploadimg">
+          <view class='gsSendPictureAdd'>
+            <view class='rowAdd'></view>
+            <view class="colAdd"></view>
+          </view>
+          <image src='{{filePath}}' mode='widthFix' name="image" />
+        </view>
+      </view>
+    </view>
+    <!-- </view> -->
+    <view class='gsPickGoodsMiddle'>
+      <view class='gsSize'>
+        <text style='float:left;'>快递点：</text>
+        <picker bindchange="bindSizeChange" data-money="{{size[sindex].price}}" data-tableid="{{size[sindex].id}}" value="{{sindex}}" data-name="{{size[sindex].name}}" range-key="name" range="{{size}}"style="width:80%;text-align:left;padding-left:160rpx;">
+            <view class="picker">                     
+             {{size[sindex].name}}
+            </view>
+          </picker>
+         </view>
+
+      <view class='gsFloor'>
+        <view class='gsFloorInput' style="display:flex;align-items:center">
+          <label>楼层:</label>
+          <!-- <input type='text' class="gsMoneyInput" name="gsFloor"></input> -->
+           <picker bindchange="bindFloorChange" data-money="{{floors[findex].price}}"data-fid="{{floors[findex].id}}" value="{{findex}}" data-name="{{floors[findex].name}}"range-key="name" range="{{floors}}"style="width:70%;text-align:left;padding-left:100rpx;">
+            <view class="picker">
+             {{floors[findex].name}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='gsFastMail'>
+        <text style='float:left;'>规格：</text>
+        <view class="section" style='float:left;width:70%;'>
+          <picker bindchange="bindPickerChange" name='post' data-money="{{stations[kindex].price}}" value="{{kindex}}" range="{{stations}}" range-key='name' data-name=" {{stations[kindex].name}}">
+            <view class="picker">
+              {{stations[kindex].name}}
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='gsMoney' style="display:flex;align-items:center">
+        <label>佣金:</label>
+        <input type='digit' class="gsMoneyInput" name="gsqian" value="{{total}}" disabled='disabled' style="padding-left:100rpx;width:70%"></input>
+      </view>
+      <view class='gsMoney'  style="display:flex;align-items:center" bindtap="openrule">
+        <label>优惠券:</label>
+        <input type='text' class="gsPickGoodsNumberInput" name="gsMoney" value="{{youhui}}"  disabled='disabled' style="padding-left:70rpx;width:70%"></input>
+      </view>
+      <view class='gsMoney' style="display:flex;align-items:center">
+        <label>总计:</label>
+        <input type='digit' class="gsMoneyInput" name="gsMoney" value="{{zongji}}" disabled='disabled' style="padding-left:100rpx;width:70%"></input>
+      </view>
+      <view class='gsBeizhu' style="display:flex;align-items:center">
+        <label>备注:</label>
+        <input type='text' class="gsMoneyInput" placeholder='快递单号' name="remarks"></input>
+      </view>
+    </view>
+    <button  class='gsSubmit' form-Type="submit">
+      提交
+    </button>
+  </form>
+</view>
+<view>
+  <view class='tip-content-dialog' wx:if="{{showModal}}">
+    <view class="tip-dialog-view " scroll-y='true' style='height:70%;background: #ff4d51;text-align:center'>
+      <scroll-view scroll-y="true" style="height:100%;">
+        <qs module="JSON">
+          module.exports = {
+            stringify: function(item) {
+              return JSON.stringify(item)
+            }
+          }
+        </qs>
+        <radio-group bindchange="radioChange">
+          <radio color="#ff4d51" class="quan" wx:for="{{list}}" wx:key data-id="{{item.id}}" value="{{JSON.stringify(item)}}">
+            <view style="display:flex">
+              <view>
+                <view style="font-size:40rpx;">￥{{item.amount}}</view>
+                <view style="font-size:25rpx;margin-left:10rpx;">满{{item.limit}}可用</view>
+              </view>
+              <view>
+                <view style="font-size:40rpx;margin-left:45rpx;">{{item.name}}</view>
+                <view style="font-size:25rpx;margin-left:45rpx;">{{item.end_time}}到期</view>
+              </view>
+            </view>
+          </radio>
+        </radio-group>
+      </scroll-view>
+      <view class="guan" bindtap='closerule'>
+        <image src="../index/images/qx.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

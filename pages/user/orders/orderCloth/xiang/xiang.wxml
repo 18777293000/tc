@@ -1,0 +1,25 @@
+<view style="background: #fff;">
+  <!-- 总价 -->
+  <view class="yang">
+    <view>商品总价：￥{{list.price}}</view>
+    <view>平台/店铺优惠券抵扣：-￥{{list.price - list.pay_price}}</view>
+    <view>实付：￥{{list.pay_price}}</view>
+  </view>
+  <!-- 联系人 -->
+  <view class="yang">
+    <view>
+      <text decode="{{true}}">联系人：{{list.username}}&nbsp;&nbsp;&nbsp;{{list.mobile}}</text>
+    </view>
+    <view>
+      <text>收获地址：{{list.address}}</text>
+    </view>
+  </view>
+  <!-- 订单 -->
+  <view class="yang">
+    <view>订单编号：{{list.order_no}}</view>
+    <view>支付方式：微信支付</view>
+    <view>订单备注：{{list.remarks}}</view>
+    <view>预约时间：{{list.receipt_time}}</view>
+  </view>
+  <!-- 信息 -->
+</view>

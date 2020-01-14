@@ -1,0 +1,43 @@
+<!--pages/apply/apply.wxml-->
+<view class="wrap">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <view class="box">
+      <!--报名信息-->
+      <view class="line_hei">填写报名信息</view>
+      <view class="line_hei row">
+        <text class="txt1">姓名:</text>
+        <input type="text" name="username" bindinput="nameinput" />
+      </view>
+
+      <view class="line_hei row">
+        <text class="txt1">性别:</text>
+        <!-- <input type="text" name="sex" bindinput="sexinput" /> -->
+        <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" qq:for-items="{{items}}" qq:key="name" value="{{item.name}}" checked="{{item.checked}}">
+            <text>{{item.value}}</text>
+          </radio>
+        </radio-group>
+      </view>
+
+      <view class="line_hei row">
+        <text class="txt2">身份证号:</text>
+        <input type="idcard" name="idCard" bindinput="cardinput" />
+      </view>
+
+      <view class="line_hei row">
+        <text class="txt2">手机号码:</text>
+        <input type="number" name="tel" bindinput="telinput" />
+      </view>
+    </view>
+    <!--说明-->
+    <view class="explain">
+      <view>请准备好以下材料:</view>
+      <view>1，身份证正反面复印件</view>
+      <view>2，户口本复印件，如果在外地报名，那就需要暂住证复印件</view>
+      <view>3，小一寸证件照</view>
+      <view>4，做好体检准备</view>
+    </view>
+    <!--提交审核-->
+    <button class="btn" form-type="submit" disabled="{{disabled}}">提交审核</button>
+  </form>
+</view>

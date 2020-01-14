@@ -1,0 +1,17 @@
+<!--pages/user/sign/index.wxml-->
+<view class="box">
+ <block qq:for="{{list}}">
+    <view class='list'>
+        <view class='list_top'>
+            <view>{{item.sign_time}}</view>
+            <view>
+                <image src='img/address.png'></image>
+                <text  style='line-height:40rpx;'>{{item.area}}</text>
+            </view>
+        </view>
+        <view class='list_bottom'>
+            <image  mode='widthFix' src='{{item.image}}'></image>
+        </view>
+    </view>
+ </block>
+</view>

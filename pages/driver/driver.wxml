@@ -1,0 +1,40 @@
+<!--pages/driving/driving.wxml-->
+<!--预约报名-->
+<!-- <view class="header">
+    <view class="header_box">
+        <view class="header_img" bindtap='order'>
+            <image src="{{banner1}}" class="image" mode="aspectFill" />
+        </view>
+        <view class="header_img" bindtap='order'>
+            <image src="{{banner2}}"  class="image" mode="aspectFill" />
+        </view>
+    </view>
+</view>
+<view class="border"></view> -->
+<!--预约报名-->
+<!-- <view><text class="checkIn" >预约报名</text><image src="/img/head.png"></image></view> -->
+ <view class='server_top' style="margin:10rpx auto">
+      <text class='line'></text>
+      <text>预约报名</text>
+      <text class='line'></text>
+</view>
+<block qq:for="{{content}}">
+    <view class="content">
+        <view class="content_left">
+            <image src="{{item.image}}" class="image" mode="aspectFill" />
+        </view>
+        <view class="content_right">
+            <view class="content_rightTop">
+                <view class="content_title">
+                    <view class="content_txt">{{item.name}}</view>
+                    <view class="content_price">￥{{item.enroll}}</view>
+                </view>
+                <view class="btn" bindtap='apply' data-id="{{item.id}}">我要报名</view>
+            </view>
+            <view class="content_botm">
+                <image src="" class="image" mode="aspectFill" />
+                <text class="adres">{{item.address}}</text>
+            </view>
+        </view>
+    </view>
+</block>

@@ -1,0 +1,28 @@
+<!--pages/food/goods/goods.wxml-->
+<import src="../../../res/wxParse/wxParse.wxml"/>
+<view class="page">
+  <view>
+    <image src="{{images}}" class="goods"/>
+    <view class="title">
+      <view class="left">
+        <text class="price">￥{{price}}</text>
+        <text class="name">{{name}}</text>
+      </view>
+      <view class="add" bindtap="account">加入购物车</view>
+    </view>
+  </view>
+  <view class="assess">
+    <!-- <view class="look">
+      <text class="num"> 评价（5）</text>
+      <text class="all" bindtap='all'> 查看全部</text>
+    </view> -->
+    <!-- <view class="words">{{content}}</view> -->
+    <template is="wxParse" class="words" data="{{wxParseData:content.nodes}}"/>
+  </view>
+  <view>
+    <view class="details">
+      <text class="baby">宝贝详情</text>
+      <image src="{{images}}" />
+    </view>
+  </view>
+</view>

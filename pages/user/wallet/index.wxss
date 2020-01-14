@@ -1,0 +1,92 @@
+/* pages/user/wallet/index.wxss */
+.pages{
+  width: 100vw;
+  height: 100vh
+}
+.pages image{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+.money_num{
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 200rpx;
+  margin-left: -100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #cbab82
+}
+.recharge{
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  width: 80%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: #cbab82;
+  color: white;
+  font-size: 32rpx;
+  letter-spacing: 10rpx;
+  border-radius: 20rpx;
+  text-align: center
+}
+.deposit{
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  width: 80%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: #cbab82;
+  color: white;
+  font-size: 32rpx;
+  letter-spacing: 10rpx;
+  border-radius: 20rpx;
+  text-align: center
+}
+.figure{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+  padding: 20rpx;
+  box-sizing: border-box;
+
+}
+.figure_box{
+  width: 80%;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  background: white;
+  margin-top: 40%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column
+}
+.money_input{
+  display:flex;
+  text-align: left;
+  font-size:30rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #f2f2f2
+}
+.confirm{
+  width: 90%;
+  padding: 20rpx;
+  margin-left: 5%;
+  box-sizing: border-box;
+  background: #e25858;
+  border-radius: 20rpx;
+  color: white;
+  text-align: center;
+  letter-spacing: 10rpx;
+  font-size: 30rpx;
+}

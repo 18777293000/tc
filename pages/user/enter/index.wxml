@@ -1,0 +1,7 @@
+<!--pages/user/enter/index.wxml-->
+<view class='pages'>
+    <image src='img/1.png' bindtap='skip' data-page="merchant"></image>
+    <image src='img/2.png' bindtap='skip' data-page="staff"></image>
+    <image src='img/3.png' bindtap='skip' data-page="jump"></image>
+    <image src='img/4.png' bindtap='skip' data-page="facilitator"></image>
+</view>

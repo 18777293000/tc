@@ -1,0 +1,29 @@
+<!--pages/user/enter/facilitator/index.wxml-->
+
+<view class='pages'>
+    <form bindsubmit='formSubmit'>
+      <view class='merchant_box'>
+          <view class='list_line'>
+              <text style='flex:2'>公司/组织名称</text> 
+              <input style='flex:5;' placeholder='' type='text' name="names"></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:2'>联系电话</text>
+              <input style='flex:7;' placeholder='' type='number' name="telephone"></input>
+          </view>
+         
+          <view class='list_line' style='flex-direction: column; align-items: left;'>
+              <text>公司/组织经营内容</text>
+              <view class='shop_img'>
+                  <textarea name="content"></textarea>
+              </view>
+          </view>
+          <view class='list_line'>
+              <text style='flex:2'>公司/组织人数</text> 
+              <input style='flex:5;' placeholder='' type='number' name="men_people"></input>
+          </view>
+         
+          <button form-type='submit'>提交审核</button>
+      </view>
+    </form>
+</view>

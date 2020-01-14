@@ -1,0 +1,86 @@
+/* pages/food/goods/goods.wxss */
+@import "../../../res/wxParse/wxParse.wxss";
+.page {
+  background: #f2f2f2;
+  box-sizing: border-box;
+}
+.goods{
+  width:100%;
+  height:400rpx;
+
+}
+.title {
+  /*padding:10rpx;*/
+  display: flex;
+  justify-content: start;
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+}
+
+.price {
+  font: 30rpx;
+  color: #cbad81;
+}
+
+.left {
+  flex: 6;
+}
+
+.left text {
+  display: block;
+}
+
+.add {
+  flex: 2;
+  font: 32rpx;
+  color: #fff;
+  background: #e25858;
+  border-radius: 30rpx;
+  padding: 20rpx;
+  text-align: center;
+}
+
+.assess {
+  background: #fff;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+}
+
+.look {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.words {
+  display: block;
+  color:#898989;
+  margin:10rpx 0rpx;
+}
+
+.num {
+  flex: 12;
+}
+
+.all {
+  flex: 3;
+  color: #cbad81;
+}
+
+.baby {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font: 30rpx;
+  padding-bottom: 20rpx;
+}
+
+.details {
+  background: #fff;
+  padding: 20rpx;
+}
+.details image{
+  width:100%;
+  margin:0 auto;
+
+}

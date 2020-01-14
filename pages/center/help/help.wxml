@@ -1,0 +1,23 @@
+<!--pages/help/help.wxml-->
+<form bindsubmit='formSubmit'>
+<view class="roast">
+  <view class="roasttop">
+    <text>标题：</text>
+    <input maxlength='32' class="roasttitle" name="roasttitle" bindblur="roasttitle" bindinput="bindText"></input>
+    <view>{{t_length}}/32</view>
+  </view>
+  <view class='roastbottom'>
+    <text>正文：</text>
+    <textarea maxlength="9999" value='' id="ta" bindinput="roascounts"></textarea>
+    <view class="camera">
+      <view bindtap="uploadimg" style="width:185rpx;height:185rpx;background:url({{pic}});margin:0 auto;border-radius:20rpx;opacity:.8;">
+        <image src='{{source}}' style="width:100%;height:100%" />
+      </view>
+      <view class="pics  {{showView?'show':'hide'}}" bindtap="uploadimg">
+        <image class="photo" src="../img/photo.png"></image>
+      </view>
+    </view>
+  </view>
+</view>
+ <button form-type='submit' class='publish'>发布</button>
+ </form>

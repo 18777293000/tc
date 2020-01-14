@@ -1,0 +1,102 @@
+/* pages/job/job.wxss */
+
+.container {
+  width: 100%;
+  height: auto;
+  background: #f2f2f2;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.job {
+  padding: 10rpx;
+  box-shadow: 1rpx 1rpx 1rpx 0rpx #ccc;
+  border-radius: 20rpx;
+   background:#fff;
+   margin-bottom: 20rpx;
+}
+
+.owner {
+  display: flex;
+  /* justify-content: space-between; */
+  border-bottom:1px solid #f9f9f9;
+  padding-bottom:10px;
+ 
+}
+
+.owner image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin: 20rpx;
+}
+
+.need {
+  padding-top: 20rpx;
+  width: 55%;
+  text-align: left;
+}
+
+.name {
+  font: 30rpx;
+  color: #404040;
+  margin-bottom: 20rpx;
+}
+
+.need text {
+  padding: 5rpx 10rpx;
+  color: #fff;
+  background: #e7d0ad;
+  margin-right: 20rpx;
+  border-radius: 20rpx;
+}
+.gain{
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin: auto;
+  background: #e7d0ad;
+  color: white;
+  border-radius:20rpx;
+}
+.gains{
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin: auto;
+  background: #7bb6d7;
+  color: white;
+  border-radius:20rpx;
+}
+.money {
+  background: #7bb6d7;
+  color: #fff;
+  padding: 20rpx;
+  border-radius: 40rpx;
+  margin-top: 65rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.cont{
+   padding:20rpx 0rpx;
+   border-bottom:1px solid #f9f9f9;
+}
+.cont image{
+  width:200rpx;
+  height:150rpx;
+}
+.time{
+display:flex;
+justify-content: space-between;
+padding:20rpx 0rpx;
+padding-bottom:10rpx;
+}
+.min{
+  display:inline-block;
+width:55%;
+
+}
+.time image{
+  width:40rpx;
+  height:30rpx;
+  margin-right:10rpx;
+  vertical-align:middle;
+}

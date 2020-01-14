@@ -1,0 +1,56 @@
+/* pages/user/enter/merchant/index.wxss */
+.pages{
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.merchant_box{
+  background: white;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+}
+.list_line{
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  
+}
+.shop_img{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.img_show{
+  width: 30%;
+  height: 190rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  position: relative;
+  border: 1px dashed #989898
+}
+.img_show image{
+  width: 100%;
+  height: 100%
+}
+.add{
+  text-align: center;
+  line-height: 170rpx;
+  font-size: 60px;
+  color: #dcc7ac
+}
+button{
+  padding: 10rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  letter-spacing: 10rpx;
+  text-align: center;
+  background: #dac9ad;
+  color: white;
+  margin-top: 30rpx
+}
+button::after{
+  border: none
+}

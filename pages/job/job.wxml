@@ -1,0 +1,32 @@
+<!--pages/job/job.wxml-->
+<view class="container">
+  <block qq:for="{{list}}">
+    <view class="job">
+      <view class="owner">
+        <image src='{{item.avatar}}'></image>
+        <view class='need'>
+          <view class="name">
+              {{item.username}}
+          </view>
+          <view style='display:flex'>
+            <block qq:for="{{item.tag}}">
+              <text class="part">{{item}}</text>
+            </block>
+          </view>
+
+        </view>
+        <view class='gain' bindtap='money' qq:if="{{item.valid==2}}" data-id="{{item.id}}">我要赚钱</view>
+        <view class='gains'  qq:if="{{item.valid==1}}">已申请</view>
+      </view>
+      <view class="cont">
+        <view><text>{{item.content}}</text> </view>
+        <image src='{{item.image}}'></image>
+      </view>
+      <view class="time">
+        <text class="min">{{item.create_time}}</text>
+      </view>
+
+    </view>
+
+  </block>
+</view>

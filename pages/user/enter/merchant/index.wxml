@@ -1,0 +1,65 @@
+<!--pages/user/enter/merchant/index.wxml-->
+<view class='pages'>
+    <form bindsubmit='formSubmit'>
+      <view class='merchant_box'>
+          <view class='list_line'>
+              <text style='flex:2'>门店名称：</text>
+              <input style='flex:7;' placeholder='请填写门店名称' type='text' name='designation'></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:3'>门店地址：</text>
+              <input style='flex:7;' placeholder='请填写门店地址' type='text' name="address" value='{{address}}'></input>
+              <button bindtap='getlocation' type='paimary' style='padding:0rpx 10rpx;margin:0 auto;box-sizing:border-box;flex:3;fontt-size:18rpx;letter-spacing: 0rpx;'>获取地址</button>
+          </view>
+          <view class='list_line' style='flex-direction: column; align-items: left;'>
+              <text>门店图片：</text>
+              <view class='shop_img'>
+                 <view class='img_show' bindtap='img_one'>
+                    <view class='add' hidden='{{shop_img1}}'>+</view>
+                    <image src='{{img_one}}'></image>
+                 </view>
+                 <view class='img_show'  bindtap='img_two'>
+                    <view class='add' hidden='{{shop_img2}}'>+</view>
+                    <image src='{{img_two}}'></image>
+                 </view>
+                 <view class='img_show' bindtap='img_three'>
+                    <view class='add' hidden='{{shop_img3}}'>+</view>
+                    <image src='{{img_three}}'></image>
+                 </view>
+              </view>
+          </view>
+
+          <view class='list_line' style='flex-direction: column; align-items: left;'>
+              <text>营业执照</text>
+              <view class='shop_img'>
+                 <view class='img_show' bindtap='img_four'>
+                    <view class='add' hidden='{{shop_img4}}'>+</view>
+                     <image src='{{img_four}}'></image>
+                 </view>
+                 
+              </view>
+          </view>
+
+          <view class='list_line' style='flex-direction: column; align-items: left;'>
+              <text>餐饮许可证/相应资质证书</text>
+              <view class='shop_img'>
+                 <view class='img_show' bindtap='img_five'>
+                    <view class='add' hidden='{{shop_img5}}'>+</view>
+                    <image src='{{img_five}}'></image>
+                 </view>
+                 
+              </view>
+          </view>
+
+          <view class='list_line'>
+              <text style='flex:2'>法人</text> 
+              <input style='flex:9;' placeholder='请填写真实的法人姓名' type='text' name="legal"></input>
+          </view>
+          <view class='list_line'>
+              <text style='flex:2'>联系方式</text>
+              <input style='flex:7;' placeholder='请填写联系电话' type='number' name="telephone"></input>
+          </view>
+          <button form-type='submit'>提交审核</button>
+      </view>
+    </form>
+</view>

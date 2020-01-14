@@ -1,0 +1,180 @@
+<!--pages/user/orders/orderWater/orderWater.wxml-->
+
+<view class="container">
+
+  <view class="swiper-tab">
+    <view wx:for="{{navbar}}" wx:key="{{id}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" data-type="{{index}}" bindtap="swichNav">{{item}}</view>
+
+  </view>
+
+  <view hidden="{{currentTab!==0}}">
+
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <view class="goods">
+        <view class="title">
+          <text class="name">{{item.water_name}}</text>
+
+          <text wx:if="{{item.status == 0}}">未付款</text>
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <text wx:if="{{item.status == 2}}">已收货</text>
+        </view>
+        <view class="middle">
+          <image src="{{item.water_image}}" class="left"></image>
+          <view class="infors">
+            <view>送水时间:</view>
+            <text>{{item.receipt_time}}</text>
+            <view>联系电话:</view>
+            <text>{{item.mobile}}</text>
+            <view>联系人:</view>
+            <text>{{item.username}}</text>
+
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.pay_price}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <view class="total">共计{{item.total_num}}件商品</view>
+              <text class="price">合计：{{item.pay_price}}</text>
+            </view>
+            <view style="display:flex" wx:if="{{item.status == 0}}">
+              <view class="res1" bindtap="reset" data-orderId="{{item.id}}">取消订单</view>
+              <view class="res1" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            </view>
+            <view class="res" wx:if="{{item.status == 1}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+  <view hidden="{{currentTab!==1}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <view class="goods">
+        <view class="title">
+          <text class="name">{{item.water_name}}</text>
+          <text wx:if="{{item.status == 0}}" bindtap="reset" data-orderId="{{item.id}}">取消订单</text>
+          <!-- <text wx:if="{{item.status == 0}}">已取消</text> -->
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <text wx:if="{{item.status == 2}}">已收货</text>
+        </view>
+        <view class="middle">
+          <image src="{{item.water_image}}" class="left"></image>
+          <view class="infors">
+            <view>送水时间:</view>
+            <text>{{item.receipt_time}}</text>
+            <view>联系电话:</view>
+            <text>{{item.mobile}}</text>
+            <view>联系人:</view>
+            <text>{{item.username}}</text>
+
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.pay_price}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <view class="total">共计{{item.total_num}}件商品</view>
+              <text class="price">合计：{{item.pay_price}}</text>
+            </view>
+            <view class="res" wx:if="{{item.status == 0}}" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            <view class="res" wx:if="{{item.status == 1}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+    </block>
+  </view>
+  <view hidden="{{currentTab!==2}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <view class="goods" bindtap="xiang" id="{{item.id}}">
+        <view class="title">
+          <text class="name">{{item.water_name}}</text>
+          <text wx:if="{{item.status == 0}}" bindtap="reset" data-orderId="{{item.id}}">取消订单</text>
+          <!-- <text wx:if="{{item.status == 0}}">已取消</text> -->
+          <text wx:if="{{item.status == 9}}" style="color:#e4393c">已取消</text>
+          <text wx:if="{{item.status == 7}}" style="color:#e4393c">退款中</text>
+          <text wx:if="{{item.status == 8}}">已退款</text>
+          <text wx:if="{{item.status == 1}}">已付款</text>
+          <text wx:if="{{item.status == 2}}">已收货</text>
+        </view>
+        <view class="middle">
+          <image src="{{item.water_image}}" class="left"></image>
+          <view class="infors">
+            <view>送水时间:</view>
+            <text>{{item.receipt_time}}</text>
+            <view>联系电话:</view>
+            <text>{{item.mobile}}</text>
+            <view>联系人:</view>
+            <text>{{item.username}}</text>
+
+          </view>
+          <view class="right">
+            <!-- <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text> -->
+            <view id="price">
+              <!-- <text class="price">{{item.pay_price}}</text> -->
+              <!-- <text>{{item.count}}</text> -->
+            </view>
+            <view class="totals">
+              <view class="total">共计{{item.total_num}}件商品</view>
+              <text class="price">合计：{{item.pay_price}}</text>
+            </view>
+            <view class="res" wx:if="{{item.status == 0}}" data-orderId="{{item.id}}" data-name="去付款" bindtap="click">去付款</view>
+            <view class="res" wx:if="{{item.status == 1}}" data-orderId="{{item.id}}" data-name="申请退款" bindtap="click">申请退款</view>
+            <view class="res" wx:if="{{item.status == 7}}" data-orderId="{{item.id}}" data-name="退款中">退款中</view>
+            <!-- <view class="res" wx:if="{{item.comments_status == 1 && item.receipt_status == 2}}" data-orderId="{{item.order_id}}" data-name="去评论" bindtap="click">去评论</view> -->
+          </view>
+
+        </view>
+      </view>
+
+    </block>
+  </view>
+
+  <!-- <view hidden="{{currentTab!==4}}">
+    <block wx:for="{{order}}" wx:key="{{id}}">
+      <view class="goods">
+        <view class="title">
+          <text class="name">{{item.name}}</text>
+          <text class="state">{{item.state}}</text>
+        </view>
+        <view class="middle">
+          <image src="{{item.pic}}" class="left"></image>
+          <view class="right">
+            <text class="words">{{item.decoration}}</text>
+            <text class="color">{{item.color}}</text>
+            <view id="price">
+              <text class="price">{{item.price}}</text>
+              <text>{{item.count}}</text>
+            </view>
+            <view class="totals">
+              <text class="total">共计{{item.num}}件商品</text>
+              <text>合计：{{item.total}}</text>
+            </view>
+            <view class="res" bindtap='sure' data-name='{{item.res}}'>{{item.res}}</view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+    <navigator url='/pages/user/assess/assess'>4444</navigator>
+  </view> -->
+</view>

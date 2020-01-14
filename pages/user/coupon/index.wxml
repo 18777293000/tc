@@ -1,0 +1,76 @@
+<!--pages/user/orders/orderCloth/orderCloth.wxml-->
+<view class="container">
+  <view class="swiper-tab">
+    <view wx:for="{{navbar}}" wx:key="{{id}}" class="swiper-tab-list {{currentTab==index ? 'on' : ''}}" data-current="{{index}}" data-type="{{index}}" bindtap="swichNav">{{item}}</view>
+
+  </view>
+
+  <view hidden="{{currentTab!==0}}" style="padding:10px 10px 40px;background:#f2f2f2;">
+    <view wx:for="{{list}}" wx:key>
+      <view class="bg">
+        <view style="flex:4;color:#fff;">
+          <view style="font-size:45rpx;margin-left:10rpx;">￥{{item.amount}}</view>
+          <view style="font-size:25rpx;margin-left:20rpx;">满{{item.limit}}可用</view>
+        </view>
+        <view style="flex:5">
+          <view style="font-size:30rpx;margin-left:45rpx;color:#ff4d51" wx:if="{{item.position==1 && auth==0}}" hidden="{{item.position!==1}}" bindtap="renz">立即认证使用</view>
+          <view style="font-size:30rpx;margin-left:45rpx;color:#ff4d51" wx:if="{{item.position==2 && qs==0}}" hidden="{{item.position!==2}}" bindtap="qs">立即认证使用</view>
+          <view style="font-size:40rpx;margin-left:45rpx;">{{item.name}}</view>
+          <view style="font-size:25rpx;margin-left:45rpx;">{{item.end_time}}到期</view>
+        </view>
+        <view style="flex:4" wx:if="{{item.position==1 && auth==0}}">
+          <image class="biao1" src="/pages/index/images/biao.png"></image>
+          <view class="lq" bindtap="index1">进入店铺</view>
+        </view>
+        <view style="flex:4" wx:if="{{item.position==2 && qs==0}}">
+          <image class="biao1" src="/pages/index/images/biao1.png"></image>
+          <view class="lq" bindtap="index1">进入店铺</view>
+        </view>
+        <view style="flex:4;position:relative" wx:if="{{item.position==1 && auth==1}}">
+          <image class="biao" src="/pages/index/images/biao.png"></image>
+          <view class="lq" hidden="{{item.use_type!==0}}" bindtap="index">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==1}}" bindtap="deliver">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==2}}" bindtap="cloth">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==3}}" bindtap="dry">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==4}}" bindtap="food">进入店铺</view>
+        </view>
+        <view style="flex:4;position:relative" wx:if="{{item.position==2 && qs==1}}">
+          <image class="biao" src="/pages/index/images/biao1.png"></image>
+          <view class="lq" hidden="{{item.use_type!==0}}" bindtap="index">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==1}}" bindtap="deliver">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==2}}" bindtap="cloth">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==3}}" bindtap="dry">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==4}}" bindtap="food">进入店铺</view>
+        </view>
+        <view style="flex:4;position:relative" wx:if="{{item.position==0}}">
+          <view class="lq" hidden="{{item.use_type!==0}}" bindtap="index">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==1}}" bindtap="deliver">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==2}}" bindtap="cloth">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==3}}" bindtap="dry">进入店铺</view>
+          <view class="lq" hidden="{{item.use_type!==4}}" bindtap="food">进入店铺</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{currentTab!==1}}" style="padding:10px;background:#f2f2f2;">
+    <view wx:for="{{list1}}" wx:key>
+      <view class="bg1">
+        <view style="flex:4;color:#fff;">
+          <view style="font-size:45rpx;margin-left:10rpx;">￥{{item.amount}}</view>
+          <view style="font-size:25rpx;margin-left:20rpx;">满{{item.limit}}可用</view>
+        </view>
+        <view style="flex:5">
+          <view style="font-size:40rpx;margin-left:45rpx;">{{item.name}}</view>
+          <view style="font-size:25rpx;margin-left:45rpx;">已过期</view>
+        </view>
+        <view style="flex:4">
+          <image class="sx" src="/pages/index/images/gq.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<view class="gui" bindtap="rule">
+  查看优惠券使用规则
+</view>

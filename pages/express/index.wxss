@@ -1,0 +1,67 @@
+/* pages/express/express.wxss */
+.cotent{
+   width: 100%;
+   height: 100%;
+   padding: 32rpx;
+   box-sizing: border-box;
+}
+input{
+  color: #737373;
+}
+.picker{
+   color: #737373;
+}
+.section{
+  width: 80%;
+  overflow-x: auto;
+  height: 100%;
+}
+.table{
+  width: 100%;
+  height: 300repx;
+  border: 1px solid #e4e2e3;
+  padding: 0 30rpx;
+  border-radius: 22rpx;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 1px #e3e3e3;
+  background: #fff;
+  margin-bottom:28rpx; 
+}
+.list{
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #e5e5e5;
+ 
+}
+.list_s{
+  float: left;
+  height: 100%;
+  width: 50%;
+}
+.list label{
+  float: left;
+  width: 30%;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.list input{
+  float: left;
+  width: 70%;
+  height: 100rpx;
+  line-height:100rpx;
+}
+.nas{
+  color: #caae7f;
+}
+.word{
+  float:left;
+  width:20%;
+}
+.sure{
+  background:#e7d0ae; 
+  height: 95rpx;
+  border-radius: 22rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 95rpx;
+}

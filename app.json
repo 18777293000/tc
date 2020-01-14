@@ -1,0 +1,99 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/message/index",
+    "pages/message/detail/index",
+    "pages/center/index",
+    "pages/center/anonymity/anonymity",
+    "pages/center/roast/roast",
+    "pages/center/vote/vote",
+    "pages/center/help/help",
+    "pages/center/sign/sign",
+    "pages/relevant/index",
+    "pages/user/index",
+    "pages/deliver/index",
+    "pages/express/index",
+    "pages/pick/index",
+    "pages/food/food",
+    "pages/food/details/details",
+    "pages/driver/driver",
+    "pages/driver/apply/apply",
+    "pages/driver/order/order",
+    "pages/dry/dry",
+    "pages/cloth/cloth",
+    "pages/job/job",
+    "pages/user/personal/index",
+    "pages/user/attestation/index",
+    "pages/user/enter/index",
+    "pages/user/wallet/index",
+    "pages/user/sign/index",
+    "pages/user/enter/merchant/index",
+    "pages/user/enter/staff/index",
+    "pages/user/enter/errand/index",
+    "pages/user/enter/facilitator/index",
+    "pages/user/address/index",
+    "pages/user/address/add/index",
+    "pages/user/address/edit/index",
+    "pages/user/order/order",
+    "pages/login/login",
+    "pages/user/assess/assess",
+    "pages/shoppingCar/shoppingCar",
+    "pages/food/goods/goods",
+    "pages/food/evaluate/evaluate",
+    "pages/food/order/order",
+    "pages/cloth/details/details",
+    "pages/food/buy/buy",
+    "pages/food/buy/order",
+    "pages/user/orders/orders",
+    "pages/user/orders/orderCloth/orderCloth",
+    "pages/user/orders/orderWater/orderWater",
+    "pages/user/orders/orderFood/orderFood",
+    "pages/user/coupon/index",
+    "pages/user/coupon/rule/rule",
+    "pages/index/hb/index",
+    "pages/user/orders/kuaidi/kuaidi",
+    "pages/user/orders/orderCloth/xiang/xiang",
+    "pages/user/orders/orderWater/xiang/xiang",
+    "pages/user/orders/orderFood/xiang/xiang",
+    "pages/print/print",
+    "pages/user/video/index"
+  ],
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#c9ac80",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "res/imgs/index.jpg",
+        "selectedIconPath": "res/imgs/seindex.jpg"
+      },
+      
+      {
+        "pagePath": "pages/relevant/index",
+        "text": "与我相关",
+        "iconPath": "res/imgs/withme.jpg",
+        "selectedIconPath": "res/imgs/sewithme.jpg"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "个人中心",
+        "iconPath": "res/imgs/myfile.jpg",
+        "selectedIconPath": "res/imgs/semyfile.jpg"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "同城圈",
+    "navigationBarTextStyle": "black"
+  },
+"permission": {
+"scope.userLocation": {
+"desc": "你的位置信息将用于小程序位置接口的效果展示"
+  }
+},
+  "sitemapLocation": "sitemap.json"
+}

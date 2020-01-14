@@ -1,0 +1,137 @@
+/* pages/user/index.wxss */
+page{
+  color:#000;
+}
+.message{
+  width: 100%;
+  padding: 40rpx 40rpx 80rpx;
+  background: #f3e7d7;
+  box-sizing: border-box;
+  display: flex
+}
+.message_img{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin: auto 0;
+  background: white;
+  overflow: hidden
+}
+.message_img image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%
+}
+.message_word{
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  font-size: 24rpx;
+  color: #6f6860;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+.order{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: -80rpx;
+}
+.order_box{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin: auto;
+  border-radius: 20rpx;
+  background: white;
+  display: flex;
+  flex-direction: column
+}
+.order_nav{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #000;
+  padding: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ddd
+}
+.order_type{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx 20rpx 0;
+  box-sizing: border-box
+
+}
+.types{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
+.types image{
+  width: 90rpx;
+  height: 90rpx;
+}
+.types view{
+  color: #000;
+}
+.list{
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box
+}
+.list_box{
+  width: 100%;
+  padding: 20epx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  background: #fff;
+  margin-bottom: 40rpx;
+}
+.list_line{
+  position: relative;
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  color: #000;
+  font-size: 26rpx;
+  padding:30rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #e5e5e5
+}
+.list_line button{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.list_line:last-child{
+  border-bottom: none
+}
+
+.btn1 {
+  width: 80%;
+  margin-top: 20rpx;
+  background-color: burlywood;
+  color: white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnImg {
+  margin-right: 8rpx;
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.btn1::after {
+  border-radius: 98rpx;
+  border: 0; 
+}

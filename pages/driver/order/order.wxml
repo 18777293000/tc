@@ -1,0 +1,93 @@
+<!--pages/driver/order/order.wxml-->
+
+<!--pages/reservation/reservation.wxml-->
+<view class="header">
+    <view class="header_box">
+        <view class="header_img" >
+            <image src="" class="image" mode="aspectFill" />
+        </view>
+        <view class="header_info" bindtap="claaPhone" data-tel="{{tel}}">
+            <view>张教练</view>
+            <view>
+                <image src="" class="image" mode="aspectFill" />
+                <text class="header_txt">{{tel}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="border"></view>
+<!--日期-->
+<!-- <view class="date">
+    <view class="date_box">
+        <view class="date_view date1">
+            <text class="wid">日</text>
+            <text class="wid">一</text>
+            <text class="wid">二</text>
+            <text class="wid">三</text>
+            <text class="wid">四</text>
+            <text class="wid">五</text>
+            <text class="wid">六</text>
+        </view>
+
+        
+        <view class="date_view">
+            <scroll-view scroll-y="{{true}}">
+                <view class="date-box">
+                    <view qq:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}}' data-date='{{item.isToday}}'> 
+                        <view class='date-head'>
+                            <view>{{item.dateNum}}</view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view> -->
+<view class='time_box'>
+  <view class="date_box">
+        <view class="date_view date1">
+            <text class="wid">日</text>
+            <text class="wid">一</text>
+            <text class="wid">二</text>
+            <text class="wid">三</text>
+            <text class="wid">四</text>
+            <text class="wid">五</text>
+            <text class="wid">六</text>
+        </view>
+
+        <view class="datebox">
+                <view class="date-box">
+                    <view qq:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}}' data-date='{{item.isToday}}'> 
+                        <view class='date-head'>
+                            <view>{{item.dateNum}}</view>
+                        </view>
+                    </view>
+                </view>
+        </view>
+    </view>
+</view>
+<view class="border"></view>
+<!--预约-->
+<view class="footer">
+    <block qq:for="{{items}}" qq:key="index">
+        <view class="footer_box" style="background:{{item.bgc}};" bindtap="bind" data-index="{{index}}" >
+            <block qq:if="{{index==0||index==1}}">
+                <view class="view">{{item.data1}}</view>
+                <view class="view">{{item.data2}}</view>
+            </block>
+            <block qq:else>
+                <view class="view">{{item.data1}}</view>
+                <view class="view">{{item.data2}}</view>
+                <view class="view">{{item.data3}}</view>
+                <!-- <view class="view">
+                    <image src="{{item.imgurl}}" class="img" mode="aspectFill" />
+                    <text>2/4</text>
+                </view> -->
+            </block>
+        </view>
+    </block>
+
+    <!--预约按钮-->
+    <button class="btn">预约</button>
+</view>
+

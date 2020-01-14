@@ -1,0 +1,81 @@
+<!--pages/message/index.wxml-->
+<template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+<import src="../../res/wxParse/wxParse.wxml"/>
+<view class="container">
+  <view class="banner" hidden="{{show}}">
+    <swiper class="" indicator-dots="true" autoplay="true" interval="3000" duration="1000" indicator-color="#fff" indicator-active-color="#e2e2e2">
+      <block qq:for-item="banner" qq:for="{{banner}}" qq:key="this">
+        <swiper-item item-id="{{index}}">
+          <image class="slide-image" mode="aspectFill" src="{{banner.image}}" data-id="{{index}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="news">
+    <block qq:for="{{listData}}" qq:key="id" data-index="{{index}}">
+      <view class='cont' bindtap="go"  data-id='{{item.id}}'>
+        <view class="title" >
+        <text class="hots" qq:if="{{item.is_top==1}}">[置顶]</text>
+          <text class="hot">{{item.hot}}</text>
+          <text class="title">{{item.title}}</text>
+        </view>
+        <view class="detail">
+          <image src='{{item.image}}' class="left" class="pic_img"  data-id='{{item.id}}'></image>
+          <view class="right">
+            <text class="right_news">{{item.content}}</text>
+            <view class="food">
+              <text class="foods">{{item.source}}</text>
+              <view class="all">
+                <!-- <view class="assess" bindtap="zan">
+                  <image src='../food/image/job_14.png'></image>
+                  <text>22</text>
+                </view> -->
+                <!-- <view class="assess"  bindtap='heart' data-index='{{index}}' data-id='{{item.id}}'> -->
+                <view class="assess"  data-index='{{index}}' data-id='{{item.id}}'>
+                  <image hidden='{{item.show}}' src='../food/image/job_12.png'></image>
+                  <image hidden='{{!item.show}}' src='../food/image/good.png'></image>
+                  <text> {{item.likes}}</text>
+                </view>
+                <view class="assess"  data-id='{{item.id}}' data-index='{{index}}'>
+                  <image src='../food/image/job_14.png'></image>
+                  <text>{{item.count}}</text>
+                </view>
+                
+              </view>
+
+
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- <view class='cont'bindtap="go">
+      <view class="title">
+        <text class="hot">[置顶]</text>
+        <text class="title">XX新店开张啦！高颜值！低热量</text>
+      </view>
+      <view class="detail">
+        <image src='../food/image/foods_05.png' class="left" class="pic"></image>
+        <view class="right">
+          <text class="right_news">多款低卡路里特色美食，美味不发胖，等你来品尝！</text>
+          <view class="food">
+            <text class="foods">XX美食</text>
+            <view class="all">
+              <view class="assess">
+                <image src='../food/image/job_14.png'></image>
+                <text>22</text>
+              </view>
+              <view class="assess">
+                <image src='../food/image/job_12.png'></image>
+                <text>56</text>
+              </view>
+            </view>
+
+
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+  </view>
+</view>

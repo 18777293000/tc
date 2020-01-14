@@ -1,0 +1,49 @@
+<!--pages/food/evaluate/evaluate.wxml-->
+<view class="page">
+  <!-- 评价 -->
+  <view style="clear:both;">
+    <text class="all">综合评分:</text>
+    <text class="num" style='font-size:32rpx;'>4.0分</text>
+    <view class="star">
+       <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+    </view>
+    <view class="assess">
+      <text>全部195</text>
+      <text>好评192</text>
+      <text>差评3</text>
+      <text>味道赞87</text>
+    </view>
+    <view class="sel" style="text-align:left">
+      <radio/>
+      <text class="pic" style='font-size:32rpx;'>有图评价</text>
+    </view>
+    <view class="cont">
+      <view class="picture">
+        <image src="../details/image/detail_05.png" />
+        <view class="person">
+          <text style='font-size:28rpx;'>姓名</text>
+          <view class="source">
+            评分
+            <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+            <image src="../details/image/foods_08.png" />
+          </view>
+        </view>
+        <text class="time">2019/3/10</text>
+      </view>
+      <view class="say">
+        <text class="word">
+               这是一段测试文章。测试代码测试代码测试代码测试代码
+               </text>
+        <image src="../details/image/detail_09.png" />
+      </view>
+
+    </view>
+  </view>
+</view>

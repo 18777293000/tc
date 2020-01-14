@@ -1,0 +1,53 @@
+/* pages/user/sign/index.wxss */
+.box{
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: white
+}
+.list{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto
+}
+.list_top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx;
+  box-sizing: border-box
+}
+.list_top image{
+  width: 40rpx;
+  height: 40rpx;
+
+}
+.list_top view:nth-child(1){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right:6px;
+  font-size: 12px;
+}
+.list_top view:nth-child(2){
+  width: 58%;
+  display: flex;
+  align-items: center;
+}
+.list_top view:nth-child(2) text{
+  display: block;
+  width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right:6px;
+}
+.list_bottom{
+  width: 80%;
+  overflow: hidden;
+  border-radius: 20rpx;
+  margin: auto;
+}
+.list_bottom image{
+  width: 100%;
+}

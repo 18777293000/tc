@@ -1,0 +1,22 @@
+<view wx:if="{{list.lenth!=0 && list!=''}}">
+  <view style="padding:10px">
+    <view wx:for="{{list}}" wx:key>
+      <view class="bg">
+        <view style="flex:4;color:#fff;">
+          <view style="font-size:45rpx;margin-left:10rpx;">￥{{item.amount}}</view>
+          <view style="font-size:25rpx;margin-left:20rpx;">满{{item.limit}}可用</view>
+        </view>
+        <view style="flex:5">
+          <view style="font-size:40rpx;margin-left:45rpx;">{{item.name}}</view>
+          <view style="font-size:25rpx;margin-left:45rpx;">有效期{{item.expire_time}}天</view>
+        </view>
+        <view style="flex:4">
+          <view class="lq" bindtap="lq" id="{{item.id}}">立即领取</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="noneME" wx:else>
+    <text>暂无优惠券</text>
+</view>

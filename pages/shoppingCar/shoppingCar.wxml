@@ -1,0 +1,49 @@
+<view class='cartallview'>
+    <view class="cart-box" qq:for="{{cartsdata}}" qq:key="{{index}}" qq:for-index="idx">
+        <!-- qq:for ���ﳵ��Ϣ�б� ͷ���̼����� -->
+        <view class='storehed'>
+            <icon type="{{item.selected ? 'success':'circle'}}" bindtap="storeselected" data-index="{{idx}}" />
+            <text>{{item.storename}}</text>
+        </view>
+        <!-- goodslist -->
+        <view>
+            <!-- ��Ʒ��� -->
+            <view class='shopgoodlist' qq:for="{{item.goodsinfo}}" qq:key="{{index}}">
+                <!-- qq:if �Ƿ�ѡ����ʾ��ͬͼ�� -->
+                <icon class='icons' type="{{item.selected ? 'success':'circle'}}" bindtap="goodsselected" data-index="{{index}}" data-select-index="{{idx}}" />
+                <!-- �����ƷͼƬ����ת����Ʒ���� -->
+                <image class="cart-thumb" src="img/car.png"></image>
+                <view class='goodsdata'>
+                    <text class='goodsname'>{{item.goodsname}}</text>
+                    <text class='specification'>{{item.specification}}</text>
+                    <view style='display:flex'>
+                    <text class='price'>￥{{item.price}}</text>
+                    <!-- ���Ӽ���������ť -->
+                    <view class='goodsnum'>
+                        <view class="cade" bindtap="minusCount" data-index="{{index}}" data-select-index="{{idx}}">
+                            -
+                        </view>
+                        <text>{{item.num}}</text>
+                        <view bindtap="addCount" data-index="{{index}}" data-select-index="{{idx}}" >
+                            +
+                        </view>
+                    </view>
+                    </view>
+                    
+                    
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- �ϼ� �ύ���� -->
+<view class='allselected'>
+    <view>
+        <icon type="{{allselected ? 'success':'circle'}}" bindtap="tapallallprices" />
+        <text>共{{allnum}}件</text>
+    </view>
+    <view>
+        <text class='allprices'>总价{{allprices}}</text>
+        <text class='placeanorder'>结算</text>
+    </view>
+</view>

@@ -1,0 +1,43 @@
+<form bindsubmit='formSubmit' data-id='{{info.id}}'>
+  <view class="from">
+    <view class="time">
+      <view class="section years">
+          <view class="picker">
+            <text class='tit'>预约时间</text> {{list.receipt_time}}
+          </view>
+      </view>
+    </view>
+    <view class="section year years">
+      <text class='tit'>所在地</text>
+      <input  type="text" name="location" value="{{list.area}}" />
+    </view>
+    <view class="phone year">
+      <text class='tit'>详细地址</text>
+      <input type="text" name="address" value="{{list.address}}" />
+    </view>
+    <view class="phone year">
+      <text class='tit'>联系电话</text>
+      <input type="number" name="phone" value="{{list.mobile}}" maxlength="11" />
+    </view>
+      <view class="phone year">
+      <text class='tit'>联系人</text>
+      <input type="text" name="username" value="{{list.username}}" />
+    </view>
+    <view class="phone year">
+      <text class='tits'>备注</text>
+      <input type="text" name="remark" value="{{list.remark}}" maxlength="200" />
+    </view>
+    <view class="phone year">
+      <text class='tits'>价格</text>
+      <input class="prices" type="number" name="price" value="￥{{list.price}}" disabled />
+    </view>
+    <view class="phone year"  bindtap="openrule">
+      <text class='tits'>优惠券</text>
+      <input class="prices" type="number" name="price" value="￥{{list.price-list.pay_price}}" disabled />
+    </view>
+    <view class="phone year">
+      <text class='tits'>总计</text>
+      <input class="prices" type="number" name="price" value="￥{{list.pay_price}}" disabled />
+    </view>
+  </view>
+</form>
